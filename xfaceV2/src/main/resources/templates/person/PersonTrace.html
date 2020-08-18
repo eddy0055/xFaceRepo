@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xml:lang="en" lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{Layout}">
+<head>
+    <title>Person Trace</title>
+    <link rel="stylesheet" href="/xFace/dist/css/pages/person/PersonTrace.css" />           		   
+    <script src="/xFace/dist/js/pages/person/PersonTrace.js"></script>
+	<script th:inline="javascript">				
+		var webSockAccept = /*[[${webSockAccept}]]*/"wait_for_server";
+		var webSockGoodbye = /*[[${webSockGoodbye}]]*/"wait_for_server";
+		var webSockEndPoint = /*[[${webSockEndPoint}]]*/"wait_for_server";		
+		var webSockSTU = /*[[${webSockSTU}]]*/"wait_for_server";
+		var webSockUTS = /*[[${webSockUTS}]]*/"wait_for_server";
+		var timerCheckConnectionMS = /*[[${timerCheckWebSocket}]]*/5000;
+		var webSocketModule = /*[[${webSocketModule}]]*/0;
+	</script>    
+</head>
+<body>	
+	<div class="notifications top-right"></div>
+	<section layout:fragment="header">
+	    <h1>Trace Person By Photo</h1>	    
+	    <ol class="breadcrumb">
+	        <li><a href="#" data-url="/xFace/dashboard/landingPage" class="subMenuLink"><i class="fa fa-dashboard"></i><span>Home</span></a></li>
+	        <li><span>Person</span></li>
+	        <li class="active"><a href="#" data-url="/xFace/person/personTrace" class="subMenuLink"><span>Person Trace</span></a></li>
+	    </ol>
+	</section>
+	<div layout:fragment="content">					
+		<div class="panel-group" id="searchOption">
+			<div class="panel panel-default">
+		    	<div class="panel-heading" style="background-color:#3c8dbc !important;">
+		        	<h4 class="panel-title" style="color:#fff !important;">
+		          		<a data-toggle="collapse" href="#collapseSearchOptionBody" id="linkSearchOption">Search Option</a>
+		        	</h4>
+		      	</div>
+		      	<div id="collapseSearchOptionBody" class="panel-collapse collapse in">
+			        <div class="panel-body">
+			        	<form>
+						  	<div class="form-row">
+							    <div class="form-group col-md-3">
+							      	<label for="dtpOptionFrom">From</label>									    					      	
+									<div class="input-group date" id="dtpOptionFrom">
+					                    <input type="text" class="form-control" readonly/>
+					                    <span class="input-group-addon">
+					                        <span class="glyphicon glyphicon-calendar"></span>
+					                    </span>
+					                </div>
+							    </div>
+							    <div class="form-group col-md-3">
+							      	<label for="dtpOptionTo">To</label>									    					      	
+									<div class="input-group date" id="dtpOptionTo">
+					                    <input type="text" class="form-control" readonly/>
+					                    <span class="input-group-addon">
+					                        <span class="glyphicon glyphicon-calendar"></span>
+					                    </span>
+					                </div>
+							    </div>
+							    
+							    <div class="form-group col-md-2">
+							      	<label for="txtOptionCertificateNo">Certificate</label>									    					      	
+									<input type="text" class="form-control" id="txtOptionCertificateNo">
+							    </div>
+							    <div class="form-group col-md-4">
+							      	<label for="Full Name">Full Name</label>									
+							      	<input type="text" class="form-control" id="txtOptionFullName">    					      										
+							    </div>		
+							</div>
+							<div class="form-row">			
+							    <div class="form-group col-md-7">
+							    	<div class="form-class">   
+	   									<div class="form-group col-sm-4">	       											                                                           
+	                      					<cetner><img id="imgOptionUploadPerview" src="/xFace/dist/img/noimage.gif" style="align:center;width: 180px; height: 180px; border: 1px solid #ddd;"></cetner>				                      									
+	   									</div>
+		   								<div class="form-group col-sm-3">	   											                       				                       								
+		        							<label class="btn btn-info">
+		    									Choose File... <input type="file" id="btnOptionUploadFile" hidden="">
+											</label>		        									
+											<font color="red"><b>*</b></font>Max File Size 5MB <br>
+		   								</div>
+		   								<div class="form-group col-md-3">							    	
+    										<button type="button" id="btnOptionRefresh" class="btn btn-success form-control">Search</button>
+							    		</div>							    		
+									</div> 
+								</div>							    										    	    		    							    							    							   			   							  
+							</div>						  							    	  	    																			
+						</form>
+			        </div>		        	
+		      	</div>
+		    </div>
+		</div>
+		<!-- web socket output temp 
+			<div id="divShowWebSocket"><div>wait for server say someting</div><br></div>
+		 -->
+		<!-- show result here -->		
+		<div id="panelPersonList">
+		</div>	
+	    <div class="panel-group templatePanelPerson" id="panelPerson_CertNo" style="display: none;">
+			<div class="panel panel-default">
+				<div class="panel-heading" id="panelPersonHeader" style="background-color:#3c8dbc !important;">
+		        	<h4 class="panel-title" style="color:#fff !important;">
+		          		<a data-toggle="collapse" href="#panelPersonBody" id="linkPageOption">FullName</a>
+		        	</h4>
+		      	</div>
+		      	<div id="panelPersonBody" class="panel-collapse collapse">
+			        <div class="panel-body">			        	
+		        		<div class="form-row" id="panelPersonInfo">				        					        			        
+			        		<div class="col-md-2">
+			        			<div class="" id="panelRadar"><div></div><div></div></div>
+			        			<cetner><img id="imgResultDbPhoto" src="/xFace/dist/img/noimage.gif" style="align:center;width: 180px; height: 180px; border: 1px solid #ddd;"></cetner>
+			        		</div>
+			        		<div class="col-md-2">
+			        			<label for="txtResultTitle">Title</label>		
+			        			<input type="text" class="form-control" id="txtResultTitle" readonly>
+			        		</div>
+			        		<div class="col-md-3">
+			        			<label for="txtResultFullName">Full Name</label>		
+			        			<input type="text" class="form-control" id="txtResultFullName" readonly>
+			        		</div>
+			        		<div class="col-md-2">
+			        			<label for="txtResultCertificateType">Certificate Type</label>		
+			        			<input type="text" class="form-control" id="txtResultCertificateType" readonly>
+			        		</div>
+			        		<div class="col-md-2">
+			        			<label for="txtResultCertificateNo">Certificate No</label>		
+			        			<input type="text" class="form-control" id="txtResultCertificateNo" readonly>
+			        		</div>
+			        		<div class="form-check col-md-2">
+							    <input type="checkbox" class="form-check-input" id="chkResultMonitor" style="margin-top:5px;">
+							    <label class="form-check-label">Monitoring</label>
+						  	</div>
+			        	</div>		
+			        	<div class="form-row" id="panelPersonMapList">
+			        	</div>		        			        				        				        
+			        </div>			       
+			    </div>
+			</div>
+		</div>	    
+		<div id="imageLoader" class="loader" style="display: none;"></div>
+		<div class="form-row templatePanelPersonMap" id="panelPersonMap" style="display: none;">
+       		<div class="col-sm-12">
+       			<label id="lblMapName">Map</label>
+       		</div>
+       		<div class="col-sm-12" id="panelMapFaceImage">       			
+       		</div>       		
+       	</div>
+       	
+       	<!-- from person Info -->
+		<div class="container">
+		  	<div class="modal fade" id="formPersonTrace" tabindex="-1" role="dialog">
+		    	<div class="modal-dialog"  style="color:#000 !important;">
+		      		<div class="modal-content">		        		
+	        			<div class="modal-header">
+	          				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	          				<h4 class="modal-title caps">Person Trace</h4>	          					          	
+	        			</div>	        			
+	        			<div class="modal-body">
+	        				<form class="form-horizontal">
+								<div class="box-body">
+									<div class="box box-primary">																											        			                       	                        	
+						        		<div class="form-group col-sm-13">
+											<div class="form-row" style="margin-top:10px;">
+												<div class="form-group col-sm-5" style="margin-left:0px;">
+													<center id="dataCenter">
+														
+													</center>
+												</div>							 											 		    
+								  			</div>							  			
+								  		</div>								  																							  	
+							  		</div>
+		                		</div>
+		               		</form>
+	        			</div>
+	        			<div id="divDisplayError" style="width:90%; margin-left: auto; margin-right: auto; margin-top: 10px;"></div>
+		        		<div class="modal-footer">
+	        				<div class="form-inline button_generic_operation">
+		          				<button type="button" id="btnAlarmInfoClose" class="btn btn-info" data-toggle="modal">Close</button>		          				
+		          			</div>		        					        			
+		        		</div>
+	      			</div>
+	    		</div>
+	  		</div>		
+		</div>
+	<!-- end of dialog -->		
+	</div>		
+	<!-- end of content -->				
+</body>
+</html>

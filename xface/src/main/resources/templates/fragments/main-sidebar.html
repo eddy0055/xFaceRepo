@@ -1,0 +1,94 @@
+<!-- sidebar: style can be found in sidebar.less -->
+<section class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+        <div class="pull-left image">
+            <img src="dist/img/user9-128x128.png" class="img-circle" alt="User Image" />
+        </div>
+        <div class="pull-left info">
+            <p>[[${#httpServletRequest.remoteUser}]]</p>             
+            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+    </div>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="active treeview">
+            <a href="/">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            </a>
+        </li>
+        
+        <li class="treeview">
+            <a href="/face">
+                <i class="fa fa-video-camera"></i> <span>Face Recognition</span>
+            </a>
+        </li>   
+        <!--         
+        <li class="treeview">
+            <a href="/reception">
+                <i class="fa fa-video-camera"></i> <span>Reception</span>
+            </a>
+        </li>        
+         -->
+         
+      <li class="treeview">
+            <a href="#">
+                <i class="fa fa-user-plus"></i> <span>Register</span>
+                <span class="pull-right-container">
+          			<i class="fa fa-angle-left pull-right"></i>
+        		</span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="/Register"><i class="fa fa-user-plus"></i> Register</a></li>
+                <li><a href="/DeleteRegister">  <i class="fa fa-user-times"></i> Delete Register</a></li>
+               
+            </ul>
+        </li>
+         
+           
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-users"></i> <span>User Management</span>
+                <span class="pull-right-container">
+          			<i class="fa fa-angle-left pull-right"></i>
+        		</span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="/user"><i class="fa fa-user"></i> Users</a></li>
+                <li><a href="/role"><i class="fa fa-lock"></i> Roles</a></li>
+            </ul>
+        </li>
+        
+       
+        
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-gears"></i> <span>Configuration</span>
+                <span class="pull-right-container">
+          			<i class="fa fa-angle-left pull-right"></i>
+        		</span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="/sysparam"><i class="fa fa-cog"></i> System Parameters</a></li>
+		        <li class="treeview">
+		            <a href="#">
+		                <i class="fa fa-edit"></i> <span>Master Data</span>
+		                <span class="pull-right-container">
+		          			<i class="fa fa-angle-left pull-right"></i>
+		        		</span>
+		            </a>
+		            <ul class="treeview-menu">
+		                <li><a href="/building"><i class="fa fa-circle-o"></i> Building</a></li>
+		                <li><a href="/area"><i class="fa fa-circle-o"></i> Area</a></li>
+		                <li><a href="/ipcgroup"><i class="fa fa-circle-o"></i> IP Camera Group</a></li>
+		                <li><a href="/ipc"><i class="fa fa-circle-o"></i> IP Camera</a></li>
+		            </ul>
+		        </li>
+            </ul>
+        </li>        
+        <li><a href="/logout"><i class="fa fa-power-off"></i> <span>Logout</span></a></li>
+    </ul>
+</section>
+<!-- /.sidebar -->

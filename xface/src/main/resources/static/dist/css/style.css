@@ -1,0 +1,159 @@
+.images {
+    display: inline;
+    margin: 10px;
+    padding: 0px;
+    vertical-align:middle;
+    width:120px;
+}
+
+#content {
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    height: auto;
+    max-width: auto;
+    overflow-y: hidden;
+    overflow-x:auto;
+    word-wrap:normal;
+    white-space:nowrap;
+}
+
+.img-photo {
+	width: 120px;
+}
+
+.col-xs-2-5 {
+  width: 20.83333%;
+  position: relative;
+  min-height: 1px;
+  padding-right: 5px;
+  padding-left: 15px;  
+  float: left;
+}
+
+.col-xs-4-5 {
+  width: 37.5%;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 5px;  
+  float: left;
+}
+
+.form-horizontal .control-label{
+   text-align:left !important; 
+}
+
+.ui-jqgrid .ui-jqgrid-htable th div {
+    height: auto;
+    overflow:hidden;
+    padding-right:4px;
+    padding-top:5px;
+    padding-bottom:5px;
+    position:relative;
+    vertical-align:text-top;
+    white-space:normal !important;
+}
+
+.ui-jqgrid {
+	width: 98.5%;
+}
+
+/* CSS REQUIRED */
+.state-icon {
+    left: -5px;
+}
+
+.no-header {
+	text-align: center;
+}
+
+/*Custom CSS that should put after BxSlider.css file*/
+
+.bx-wrapper {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  height: 68vh;
+}
+.bx-controls a {
+  transform: rotate(90deg);
+  left: 45% !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+}
+.bx-controls .bx-prev {
+  top: -10px !important; */
+}
+.bx-controls .bx-next {
+  top:68vh !important; */
+}
+.bx-controls-direction a {
+    opacity: 0;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+}
+
+.bx-wrapper:hover .bx-controls-direction a {
+    opacity: 1;
+}
+.bxslider li a {
+   color:inherit;
+   cursor: pointer;
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+	vertical-align: middle;
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+    text-align: center;
+}
+
+/* Custom badge */
+.xbadge {
+  padding: 12px 6px 12px;
+  font-size: 24px;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #ffffff;
+  background-color: #999999;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  height: 80px;  
+  width: 80px;
+  opacity: 0.7;
+}
+.xbadge:hover {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 1;
+}
+.xbadge-error {
+  background-color: #b94a48;
+}
+.xbadge-error:hover {
+  background-color: #953b39;
+}
+
+.similarity span.xbadge {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+.similarity-body {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #a3a3a3;
+}

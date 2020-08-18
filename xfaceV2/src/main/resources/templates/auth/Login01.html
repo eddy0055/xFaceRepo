@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="/xFace/dist/img/xface_logo.png">
+    <title>xFace - Login</title> 
+    -->
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="/xFace/plugins/bootstrap3.3.6/css/bootstrap.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/xFace/dist/css/AdminLTE.min.css" />       
+    <!-- jQuery 3 --> 
+	<script src="/xFace/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+	<!-- Bootstrap 3.3.7 --> 
+	<script src="/xFace/plugins/bootstrap3.3.6/js/bootstrap.min.js"></script>
+	<script src="/xFace/dist/js/global-script.js"></script>
+	<script src="/xFace/dist/js/pages/auth/Login.js"></script>
+	    
+	    
+</head>
+
+
+<body class="hold-transition login-page">	
+	<div class="login-box">
+		<!--  title -->  
+		<div class="login-logo">
+	    	<a href="#"><b>xFace</b> System</a>
+	  	</div>
+	  	<!-- /.login-logo -->  
+	  	<div class="login-box-body">
+	    	<p class="login-box-msg">xFace - Login</p>	
+	    	<form id="formLogin" action="/xFace/auth/login" method="post">
+	      		<div class="form-group has-feedback">
+	      			<p id="errorUserNameBlank" hidden>Please enter username</p>
+	      			<p id="errorPwdBlank" hidden>Please enter password</p>
+	        		<input type="email" class="form-control" placeholder="Email" name="username" id="userName">
+	        		<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+	      		</div>
+	      		<div class="form-group has-feedback">
+	        		<input type="password" class="form-control" placeholder="Password" name="password" id="userPwd">
+	        		<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+	      		</div>	      
+	  	  		<div id="divLoginResult" class="alert alert-danger alert-dismissible fade in" th:if="${param.error}">
+	  	  			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	  	  			<strong>Error!</strong> <span th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">Error return from login module</span>
+	  	  		</div>
+	  	  		<div id="divDisplayError"></div>
+	      		<div class="row">
+		        	<!-- /.col -->
+		        	<div class="col-xs-4">
+		          		<button type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
+		        	</div>
+		        	<div class="col-xs-6">
+		          		<button type="button" id="btnForgetPwd" class="btn btn-warning btn-block btn-flat">Forget Password</button>
+		        	</div>
+		        	<!-- /.col -->
+	    		</div>	    		
+			</form>	
+			<div id="imageLoader" class="loader"></div>
+			<!-- 
+				<a id="btnForgetPwd" href="#">I forgot my password</a><br>
+			 -->  			
+	  	</div>
+	  	<!-- /.login-box-body -->
+	</div>
+	<!-- /.login-box -->		
+</body>
+</html>
+
+
+

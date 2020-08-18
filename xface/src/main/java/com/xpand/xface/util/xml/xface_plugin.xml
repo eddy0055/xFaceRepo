@@ -1,0 +1,20 @@
+<plugin>
+	<jarEntry enable="true">
+		<fileName>XFaceActionSayHello.jar</fileName>
+		<classEntry>
+			<className>com.xpand.xface.action.SayHelloAction</className>			
+		</classEntry>		
+		<classEntry enable="false">
+			<className>com.xpand.xface.action.SayHelloActionV2</className>			
+		</classEntry>		
+	</jarEntry>	
+	<jarEntry enable="false">
+		<fileName>XFaceActionSayHelloV2.jar</fileName>
+		<classEntry>
+			<className>com.xpand.xface.action.SayHelloAction</className>			
+		</classEntry>		
+		<classEntry>
+			<className>com.xpand.xface.action.SayHelloActionV2</className>			
+		</classEntry>		
+	</jarEntry>	
+</plugin>

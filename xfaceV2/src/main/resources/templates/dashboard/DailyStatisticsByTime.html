@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xml:lang="en" lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{Layout}">
+<head>
+    <title>Daily Statistics By Time</title>       
+    <link rel="stylesheet" href="/xFace/dist/css/pages/dashboard/DailyStatisticsByTime.css" />	
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>	
+    <script src="/xFace/dist/js/pages/dashboard/DailyStatisticsByTime.js"></script>    
+    <script th:inline="javascript">			
+		var paramStartDate = /*[[${startDate}]]*/"";
+    	var paramEndDate = /*[[${endDate}]]*/"";
+	</script> 
+</head>
+<body>	
+	<div class="notifications top-right"></div>
+	<section layout:fragment="header">
+	    <h1>Daily Statistics By Time</h1>	    
+	    <ol class="breadcrumb">
+	        <li><a href="#" data-url="/xFace/dashboard/landingPage" class="subMenuLink"><i class="fa fa-dashboard"></i><span>Home</span></a></li>
+	        <li><span>Person</span></li>
+	        <li class="active"><a href="#" data-url="/xFace/dashboard/dailyStaticticsByTime" class="subMenuLink"><span>Daily Statistics By Time</span></a></li>
+	    </ol>
+	</section>
+	<div layout:fragment="content">			
+		<!--  start option -->		
+		<div class="panel-group" id="statisticsOption">
+			<div class="panel panel-default">
+		    	<div class="panel-heading" style="background-color:#3c8dbc !important;">
+		        	<h4 class="panel-title" style="color:#fff !important;">
+		          		<a data-toggle="collapse" href="#collapseOptionBody" id="linkPageOption">Statistics Option</a>
+		        	</h4>
+		      	</div>
+		      	<div id="collapseOptionBody" class="panel-collapse collapse in">
+			        <div class="panel-body">
+			        	<form>
+						  	<div class="form-row">
+							    <div class="form-group col-md-3">
+							      	<label for="dtpOptionFrom">From</label>									    					      	
+									<div class="input-group date" id="dtpOptionFrom">
+					                    <input type="text" class="form-control" readonly/>
+					                    <span class="input-group-addon">
+					                        <span class="glyphicon glyphicon-calendar"></span>
+					                    </span>
+					                </div>
+							    </div>
+							    <div class="form-group col-md-3">
+							      	<label for="dtpOptionTo">To</label>									    					      	
+									<div class="input-group date" id="dtpOptionTo">
+					                    <input type="text" class="form-control" readonly/>
+					                    <span class="input-group-addon">
+					                        <span class="glyphicon glyphicon-calendar"></span>
+					                    </span>
+					                </div>
+							    </div>							 
+							    <div class="form-group col-md-4">
+							    	<label for="cmbOptionDashboard">Dashboard Type</label>									    					      	
+									<select id="cmbOptionDashboard" name="cmbOptionDashboard" class="form-control selectpicker">
+										<option th:value="${RNPBT}" th:text="${RNPBTD}">RNPBTD</option>	  		
+										<option th:value="${RNPGBT}" th:text="${RNPGBTD}">RNPGBTD</option>
+										<option th:value="${RNFBT}" th:text="${RNFBTD}">RNFBTD</option>
+										<option th:value="${RNFGBT}" th:text="${RNFGBTD}">RNFGBTD</option>
+										<option th:value="${RNPBBT}" th:text="${RNPBBTD}">RNPBBTD</option>																	  							
+									</select>
+							    </div>
+							    <div class="form-group col-md-2">
+							    	<button type="button" id="btnOptionRefresh" class="btn btn-success form-control" style="margin-top:24px;">Refresh</button>
+							    </div>   											   	    							    							    							   			   							  
+							</div>						  																				
+						</form>
+			        </div>		        	
+		      	</div>
+		    </div>
+		</div>
+		<!-- end of option -->
+		<!-- show chart -->			
+	    <div data-role="page" data-theme="b" id="panelShowStatistics" class="my-page" data-url="panelShowStatistics">	    					    		    	                            		    		    		    	    		    		    
+	    </div>
+	    <!-- end of show chart -->
+	    <!-- one row with 2 chart template -->
+	    <div class="row" id="templateChartRow" style="display: none;">		    	
+			
+	    </div>
+	    <!-- end of one row with 2 chart template -->
+	    <!-- one chart template -->
+	    <div class="col-lg-6" id="templateChartItem" style="display: none;">
+    		<div class="box box-solid bg-light-blue-gradient">
+                <div class="box-header">
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <button type="button" id="btnRefresh" class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip" title="Refresh Data">
+                            <i class="fa fa-refresh"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm pull-right" data-widget="collapse" data-toggle="tooltip" title="Collapse" style="margin-right: 5px;">
+                            <i class="fa fa-minus"></i></button>
+                    </div>
+                    <!-- /. tools -->		
+                    <i class="fa fa-map-marker"></i>		
+                    <h3 class="box-title" id="chartTitle">Chart Title</h3>
+                </div>
+                <div class="box-body">
+                    <div id="panelChart">				    			    
+				    	<div id="chartItem" class="chart" style="cursor: pointer;">		    		
+				    	</div>	    			
+				    </div>
+                </div>
+                <!-- /.box-body-->
+                <div class="box-footer no-border">
+                    <div class="row">
+                        <div class="col-xs-12" style="border-right: 1px solid #f4f4f4">
+                            <div id="sparkline-1"></div>
+                            <div  id="chartFooter" class="chartFooter">Chart Footer</div>
+                        </div>		                        
+                    </div>
+                    <!-- /.row -->
+                </div>
+            </div>	
+    	</div>
+	    <!-- end of one chart template -->
+		<div id="imageLoader" class="loader" style="display: none;"></div>				
+	</div>
+	<!-- end of content -->				
+</body>
+</html>

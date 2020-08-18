@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xml:lang="en" lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{Layout}">
+<head>
+    <title>Area</title>  
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />    
+   
+	<link rel="stylesheet" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css" />  
+	<!-- <script src="/plugins/jQuery/jQuery-2.2.0.min.js"></script> -->    
+	<script src="/plugins/jqgrid/i18n/grid.locale-en.js" type="text/javascript"></script>
+	<script src="/plugins/jqgrid/jquery.jqgrid.min.js"></script>
+    
+    <script src="/dist/js/pages/register.js"></script> 
+ 
+	<script src="/dist/validator/jquery.form.validator.min.js"></script>
+	<link rel="stylesheet" href="/dist/validator/validator.css"/>
+	<link rel="stylesheet" href="/dist/validator/Xface-loading.css"/>
+	<script src="/dist/validator/security.js"></script>
+	  
+	<style>
+  .modal-header, h5, .close {
+      background-color: #5cb85c;
+      color:white !important;
+      text-align: center;
+      font-size: 20px;
+  }
+  
+  .modal-footer {
+      background-color: #f9f9f9;
+  }
+  
+   .modal-header-fail, h5, .close {
+      background-color: red;
+      color:white !important;
+      text-align: center;
+      font-size: 20px;
+  }
+  
+  .modal-footer {
+      background-color: #f9f9f9;
+  }
+  </style>  
+	  
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>
+        Register
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+        <li>Configuration</li>
+        <li class="active"><a href="/Register"> Register </a></li>
+    </ol>
+</section>
+<div layout:fragment="content">
+    <!-- Main row -->
+    
+    <div class="row">
+	    <div class="col-xs-12">
+	        <div class="box box-primary">
+	            <div class="box-header">
+	             
+	            </div>
+	            <!-- /.box-header -->
+	            <div class="box-body">  
+	              <!-- Register Form -->
+	                 	<form class="form-horizontal" role="form" id="form" enctype="multipart/form-data"  method="post" action="register.js">
+	                 <div class="col-md-5">
+	                      <div class="box box-primary">
+	                         <center><label> Register Detail </label></center>
+	                       
+	                        <div class="form-group"> 
+	                          <label>Person title </label>
+	                          <select class="form-control" id="txt_PersonTitle" name="txt_PersonTitle">
+   								
+  							</select>
+	                       </div>
+	                       
+	                        <div class="form-group">
+	                          <label>First Name</label> 
+	                          <input type="text" class="form-control" id="txt_FirstName" name="txt_FirstName"  placeholder="First Name"/> 
+	                        </div>
+	                 
+	                        <div class="form-group">
+	                          <label>Last Name</label> 
+	                          <input type="text" class="form-control" id="txt_LastName" name="txt_LastName"  placeholder="Last Name"/> 
+	                        </div>
+	                      
+	                        
+	                  
+	                       <div class="form-group"> 
+	                          <label>Person Category </label>
+	                          <select class="form-control" id="txt_PersonCategory" name="txt_PersonCategory">
+   								
+  							  </select>
+	                       </div>
+	                       
+	                         
+	                       <div class="form-group"> 
+	                          <label>Person Certification </label>
+	                           <select class="form-control" id="txt_PersonCer" name="txt_PersonCer">
+   								
+  							   </select>
+	                       </div>
+	                       
+	                       
+	                        <div class="form-group">
+	                          <label>Certification No</label> 
+	                          <input type="text" class="form-control" id="txt_CerNo" name="txt_CerNo"  placeholder="Certification No"/> 
+	                        </div>
+	                       
+	                      
+	                       
+	                 </div> 
+	               </div>  
+	              <div class="col-md-1"></div>
+	             <!-- Picture Form  -->
+	                 <div class="col-md-3">
+	                   <div class="box box-primary">
+	                     <center><label> Picture </label></center>
+	                    <div class="form-class">
+	                      <center>
+	                      <img id="image_upload_preview" src="/dist/img/noimage.gif" style="align:center;width: 180px; height: 180px; border: 1px solid #ddd;"  />
+	                     	
+	                       <div id="loading"></div>
+	                       <font color="red"><b>  * </b> </font>Max File Size 5MB 
+	                        <br></br>									
+	                       <input id="txt_file" type="file" name="txt_file"  /> 
+	                      </center> 
+	                    
+	                     
+	                      <br></br>  
+	                   </div>
+	      
+	                 <div class="form-group"> 
+	                   <center>
+	                    
+	                     <button type="button" id="btn_search" class="btn btn-info"> <span class="glyphicon glyphicon-search"></span> Search</button> 
+	                     <button type="button" id="btn_save" class="btn btn-info"><span class="glyphicon glyphicon-floppy-disk"></span>  Save </button>  
+	                     <button type="button" id="btn_reset" class="btn btn-danger" onclick="location.reload();"><span class="glyphicon glyphicon-refresh"></span> Reset</button>
+	                     
+	                   </center>
+	                 </div>
+	                 <!-- End of Form -->
+	                </div>  
+	               </div>
+	           </form>
+	            <!--  Page Loading -->    
+	              <div class="loader"></div>
+                   
+	            <!-- /.box-body -->
+	            </div>
+	        <!-- /.box -->
+	    	</div>		
+    	</div>
+   </div> 
+    <!-- /.row (main row) -->  
+
+
+
+ 
+ 
+ <script type="text/javascript">
+   
+//Play Loading
+ $(window).load(function() {
+     $(".loader").fadeOut("slow");
+ });
+
+ //put Image when select file
+ $('.txt_file').click(function(){
+
+     $("#txt_photo").attr('src',"");
+ // Loading image
+       
+ 
+ });
+     
+
+</script>
+
+
+<!-- Modal Success -->         
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Save Success</h4>
+      </div>
+      <div class="modal-body">
+        <p>Save Record Success</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+<!-- Modal Search Success -->         
+<div id="SearchModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Search Result</h4>
+      </div>
+      <div class="modal-body">
+        <p> Search Result</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+
+<!-- Modal Fail -->         
+<div id="myModal-fail" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header-fail">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Save Fail !!</h4>
+      </div>
+      <div class="modal-body">
+        <div id="Message-fail"> </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+    
+
+
+
+
+
+
+
+
+
+
+<!-- Modal Srarch not found -->         
+<div id="SearchModal-fail" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header-fail">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Search Not Found !!</h4>
+      </div>
+      <div class="modal-body">
+        <div id="Search-fail"> Search Not Found</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->    
+  
+    
+    
+<!-- Modal Alert Validate file size -->         
+<div id="ModalFileMax" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header-fail">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">File Size Maximum</h4>
+      </div>
+      <div class="modal-body">
+        <p>File Size Maximum Over 5MB !! <br></br>
+        (Please check file size)
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+ 
+ 
+
+ 
+</body>
+</html>
+

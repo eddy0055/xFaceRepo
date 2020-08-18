@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xml:lang="en" lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{Layout}">
+<head>
+    <title>LocationMap Config</title>  
+    <script src="/xFace/dist/js/pages/cfg/LocationMap.js"></script>	
+</head>
+<body>	
+	<div class="notifications top-right"></div>
+	<section layout:fragment="header">								
+	    <h1>Location Map Configure</h1>
+	    <ol class="breadcrumb">
+	        <li><a href="#" data-url="/xFace/dashboard/landingPage" class="subMenuLink"><i class="fa fa-home"></i> <span>Home</span></a></li>
+	        <li><span>Configuration</span></li>
+	        <li class="active"><a href="#" data-url="/xFace/cfg/locationMap" class="subMenuLink"><span>Location Map Configure</span></a></li>
+	    </ol>
+	</section>
+	<div layout:fragment="content">
+		<div class="panel-group" id="pageOption">
+			<div class="panel panel-default">
+		    	<div class="panel-heading" style="background-color:#3c8dbc !important;">
+		        	<h4 class="panel-title" style="color:#fff !important;">
+		          		<a data-toggle="collapse" href="#collapseOptionBody" id="linkPageOption">Option</a>
+		        	</h4>
+		      	</div>
+		      	<div id="collapseOptionBody" class="panel-collapse collapse in">
+			        <div class="panel-body">
+						<form>
+							<div class="form-inline button_generic_operation">    			
+								<button type="button" id="btnAdd" class="btn btn-primary form-control">Add New</button>               
+				    			<button type="button" id="btnEdit" class="btn btn-primary form-control">Edit</button>    
+								<button type="button" id="btnDelete" class="btn btn-danger form-control" data-toggle="modal" data-target="#confirm-delete">Delete</button>          
+							</div>		
+						</form>
+						<!-- end of panel-body -->
+					</div>
+					<!-- end of collapseOptionBody -->
+				</div>
+				<!-- end of panel-default -->
+			</div>
+			<!-- end of panel-group -->
+		</div>
+	    <!-- Main row -->
+	    <div class="row">
+		    <div class="col-xs-12">		        
+	            <div class="box-body">		                
+	                <table id="data-table" class="display" style="width:100%">
+	                	 <thead>
+				            <tr>
+				                <th>Map Code</th>
+				                <th>Map Name</th>	
+				                <th>Map Description</th>	
+				                <th>User Created</th>					                
+				            </tr>
+				        </thead>
+				        <tfoot>
+				            <tr>
+				                <th>Map Code</th>
+				                <th>Map Name</th>
+				                <th>Map Description</th>
+				                <th>User Created</th>		
+				            </tr>
+				        </tfoot>
+	                </table>	
+	                <div id="pager"></div>		                
+	                <div id="imageLoader" class="loader"></div>		            		            	
+            	</div>	        			
+	    	</div>
+	    </div>
+	    <!-- /.row (main row) -->  
+	    
+	    
+	    <!-- from add/edit -->
+		<div class="container">
+		 	<!-- [ Modal #1 ] -->
+		  	<div class="modal fade" id="formModal" tabindex="-1">
+		    	<div class="modal-dialog">
+		      		<div class="modal-content">
+		        		<button type="button" class="close" data-dismiss="modal"><i class="icon-xs-o-md"></i></button>
+	        			<div class="modal-header">
+	          				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	          				<h4 class="modal-title caps"><strong>Location Map Config</strong></h4>
+	        			</div>
+	        			<div class="modal-body">		        
+	        				<form class="form-horizontal">
+								<div class="box-body">
+									<div class="form-group">
+			                  			<label for="txtMapCode" class="col-sm-3 control-label">Map Code</label>				                  
+			                  			<div class="col-sm-9">
+			                    			<input type="text" id="txtMapCode" class="form-control" placeholder="Map Code" />
+							  			</div>		                  
+			                		</div>	
+			                		<div class="form-group">
+			                  			<label for="txtMapName" class="col-sm-3 control-label">Map Name</label>				                  
+			                  			<div class="col-sm-9">
+			                    			<input type="text" id="txtMapName" class="form-control" placeholder="Map URL"/>
+							  			</div>		                  
+			                		</div>	
+			                		<div class="form-group">
+			                  			<label for="txtMapDesc" class="col-sm-3 control-label">Map Description</label>				                  
+			                  			<div class="col-sm-9">
+			                    			<input type="text" id="txtMapDesc" class="form-control" placeholder="Map Descrption"/>
+							  			</div>		                  
+			                		</div>	
+			                		
+			                		<div class="form-group">
+			                			<div class="box box-primary">
+                    						<center><label> Picture </label></center>
+			                				<div class="form-group col-sm-12">	       											                                                           
+	                      					 <img id="imgUploadPerview" src="/xFace/dist/img/noimage.gif" style="align:center;width: 600px; height: 380px; border: 1px solid #ddd;">		                      									
+	   										</div>
+	   											<div id="loading"></div>
+	                       									
+			                				</div>
+			                			</div>
+		                			</div>
+		                			<div class="form-group"> 
+		                				<div class="form-group col-sm-4">
+		    					 	    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="red"><b>*</b></font>Max File Size 5MB <br>	                       									
+        										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label class="btn btn-info">
+    												Choose File... <input type="file" id="btnUploadFile" hidden>
+												</label>&nbsp;
+        									<span class="label label-info" id="lblUploadFile"></span>	       				
+		                				</div>
+		                				<div class="form-group col-sm-8">
+		                				</div>
+		                			</div>
+		               		</form>        
+	        			</div>
+	        			<div id="divDisplayError" style="width:90%; margin-left: auto; margin-right: auto;"></div>
+		        		<div class="modal-footer">
+		          			<div id="div8"></div>
+		          			<button type="button" id="btnSave" class="btn btn-info" data-toggle="modal">Save</button>
+		          			<button type="button" id="btnClose" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+		        		</div>
+	      			</div>
+	    		</div>
+	  		</div>		
+		</div>
+	</div>   		 	       
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{Layout}">
+<head>
+    <title>Staff Attendance</title>
+    
+	<script src="/dist/js/ivs/ivs_main.js"></script>
+	<script src="/dist/js/ivs/ivs_login.js"></script>
+	<script src="/dist/js/ivs/ivs_live.js"></script>
+	<script src="/dist/js/pages/reception.js"></script>    
+</head>
+<body onload="ivs_init()">
+<div layout:fragment="content">  
+    <!-- Main row -->
+    <div class="row">
+		<div class="col-xs-2-5">
+          <div class="box">
+			<div class="box-header with-border">
+		   		<div class="box-body">
+		             <div class="row-fluid">
+		               <div class="col-md-12">
+					      <!-- Staff Detail Information -->
+					      <img id="db_photo" class="img-responsive" src="https://upload.wikimedia.org/wikipedia/en/e/ee/Unknown-person.gif" >
+					   </div>
+				  	 </div>
+				</div>			
+		  	</div>
+	      </div>
+          <div class="box">
+			<div class="box-header with-border">
+		   		<div class="box-body">
+		             <div class="row-fluid">
+		               <div class="col-md-12">
+					      <!-- Staff Detail Information -->
+					      <img id="live_photo" class="img-responsive" src="https://upload.wikimedia.org/wikipedia/en/e/ee/Unknown-person.gif" >
+					   </div>
+				  	 </div>
+				</div>			
+		  	</div>
+
+            <!-- /.info-box-content -->
+		  </div>		  
+		</div>		
+				
+		<!-- Staff Detail Information -->		
+        <div class="col-md-5">
+          <div class="box">
+			<div class="box-header with-border">
+		   		<div class="box-body">
+					<form role="form" class="form-horizontal">
+		              <div class="box-body">
+		                <div class="form-group">
+		                  <label id="lbl_hwid" class="col-xs-5 control-label">HW ID: XXXXXX</label>
+		                  
+		                  <div class="col-sm-7">
+		                    <input type="text" class="form-control" id="txt_id_passport" placeholder="Search ID/Passport ID">		                    		                    
+		                  </div>			                  
+						</div>
+		                <div class="form-group">
+		                  <label id="lbl_name" class="col-xs-8 control-label">Name: XXXXXXXX</label>
+						</div>
+		                <div class="form-group">
+		                  <label id="lbl_dept" class="col-xs-8 control-label">Department: XXXXXXXX</label>
+						</div>						
+		                <div class="form-group">
+		                  <label id="lbl_status" class="col-xs-8 control-label">Status: Business Trip</label>
+						</div>						
+		                <div class="form-group">
+		                  <label id="lbl_visatype" class="col-xs-4 control-label">Visa: XXXXXXX</label>
+		                  <label for="txt_visavalidity" class="col-sm-3 control-label">Validity:</label>
+		
+		                  <div class="col-sm-5">
+		                    <input type="text" class="form-control" id="txt_visavalidity" placeholder="Visa Validity">		                    		                    
+		                  </div>		                  
+						</div>	
+		                <div class="form-group">
+		                	<label id="lbl_location" class="col-xs-8 control-label">Location: XXXXXXX</label>
+						</div>
+						<button class="btn btn-primary">Confirm</button>
+						<button class="btn btn-warning">Modify</button>																					
+					  </div>
+					</form>   		
+				</div>			
+		  	</div>
+	      </div>
+		</div>	
+		  	
+		<!-- Video Tracking -->
+        <div class="col-xs-4-5">
+          <div class="box">
+			<div class="box-header with-border">		
+		   		<div class="box-body">
+		             <div class="row-fluid">
+		               <div class="col-md-auto">
+		               	  <div style="border:solid 1px grey; margin-top: 5px;">
+							<object id="ocx" style="width: 100%; min-height: 250px;" classid="CLSID:3556A474-8B23-496F-9E5D-38F7B74654F4" codebase="/ocx/IVS_OCX.cab#version=2,2,0,21"> 
+							</object>
+						  </div>
+					   </div>
+				  	 </div>
+				</div>			
+		  	</div>
+	      </div>
+		</div>		  	
+		  	
+    </div>
+    <!-- /.row (main row) -->
+    
+    <div class="row">
+        <div class="col-md-12">
+	        <div class="box">
+				<div id="content">
+				</div>	        
+	        </div>
+		</div>    
+    </div>
+</div>	
+</body>
+</html>

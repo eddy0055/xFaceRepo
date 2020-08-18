@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Chat Application </title>
+	
+	<script src="/bootstrap/js/jquery-1.10.2.min.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+			var initBoundary= randomString();
+			var strBoundary = "--" + initBoundary;
+			
+			$("#btnUpload").click(function() {
+	    	    var data;
+	    	    var json =  {  
+	    	    	    "personTitle": {"titleId": 1},
+	    	    	    "personCertification": {"certificationId": 1},
+	    	    	    "certificationNo": "123456",
+	    	    	    "firstName": "parinya",
+	    	    	    "lastName": "panvangmon",
+	    	    	    "personCategory": {"categoryId": 1}
+	    	    	 };
+	    	    
+	    	    data = new FormData();
+	    	    data.append('personInfo', json);
+	    	    data.append('personPhoto', $('input[type=file]')[1].files[0]);
+	    					
+	    	    var multipartForm = getData(data);
+	    	    
+	    	    $.ajax({
+	    	        url: '/rest/updatePersonInfo',
+	    	        processData: false,
+	    	        type: 'POST',
+	    	
+	    	        // This will override the content type header, 
+	    	        // regardless of whether content is actually sent.
+	    	        // Defaults to 'application/x-www-form-urlencoded'
+	    	        contentType: false, 
+	    	
+	    	        //Before 1.5.1 you had to do this:
+	    	        beforeSend: function (x) {
+	    	            x.setRequestHeader('Content-Type','multipart/form-data; boundary=' + strBoundary);
+	    	        },
+	    	        mimeType: 'multipart/form-data',
+	    	        data: multipartForm,
+	    	        success: function (data) {
+	    	            alert(data);
+	    	        },
+	    	        error: function(error) {
+	    	        	alert(error.responseJSON);
+	    	        }
+	        	});   
+	    	});
+			
+			 function getData (form){
+
+					//Start multipart formatting
+					var strMultipartBody = "";
+					var strCRLF = "\\r\\n";
+
+					//Create multipart for each element of the form
+					for(var pair of form.entries()) {
+					   	console.log(pair[0]+ ', '+ pair[1]);
+					   	
+					   	strMultipartBody += strBoundary + strCRLF;
+					   	
+					   	if (pair[0] == "personInfo") {
+					   		strMultipartBody +=  "Content-Disposition: form-data; name=\"" + pair[0] + "\"; " + pair[1] + strCRLF +
+				   								 "Content-Type: application/json" + strCRLF + strCRLF;				   		
+					   	} else {
+					   		strMultipartBody +=  "Content-Disposition: form-data; name=\"" + pair[0] + "\"; " + pair[1] + strCRLF +
+								 "Content-Type: image/png" + strCRLF + strCRLF					   		
+					   	}
+						
+					}				
+
+					strMultipartBody += strCRLF + strBoundary + "--" + strCRLF;
+					//End the body by delimiting it
+
+					/*
+MIME Multipart Media Encapsulation, Type: multipart/form-data, Boundary: "--------------------------700278913744666004431671"
+    [Type: multipart/form-data]
+    First boundary: ----------------------------700278913744666004431671\r\n
+    Encapsulated multipart part:  (application/json)
+        Content-Disposition: form-data; name="personInfo"; filename="Test.json"\r\n
+        Content-Type: application/json\r\n\r\n
+        JavaScript Object Notation: application/json
+    Boundary: \r\n----------------------------700278913744666004431671\r\n
+    Encapsulated multipart part:  (image/png)
+        Content-Disposition: form-data; name="personPhoto"; filename="stock_people.png"\r\n
+        Content-Type: image/png\r\n\r\n
+        Portable Network Graphics
+    Last boundary: \r\n----------------------------700278913744666004431671--\r\n
+
+    */
+					
+					//Return boundary without -- and the multipart content
+					return strMultipartBody;
+				};
+
+				function randomString() {
+
+					var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+					var string_length = 20;
+					var randomstring = '';
+
+					for (var i=0; i<string_length; i++) {
+
+						var rnum = Math.floor(Math.random() * chars.length);
+
+						randomstring += chars.substring(rnum,rnum+1);
+
+					}
+
+					return randomstring;
+				};			
+		});		
+	</script>    
+    
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/websock_style.css" rel="stylesheet">
+    
+    <script src="/bootstrap/js/websock_js.js"></script>
+</head>
+<body>
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="connect">Chat Application:</label>
+                    <button id="connect" type="button">Start New Chat</button>
+                    <button id="disconnect" type="button" disabled="disabled">End Chat
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="chat">
+                <thead>
+                <tr>
+                    <th>Welcome user. Please enter you name</th>
+                </tr>
+                </thead>
+                <tbody id="helloworldmessage">
+                </tbody>
+            </table>
+        </div>
+            <div class="row">
+        
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <textarea id="user" placeholder="Write your message here..." required></textarea>
+                </div>
+                <button id="send" type="submit">Send</button>
+            </form>
+        </div>
+        </div>
+    </div>
+     
+    <div class="row">
+    	<input type="file" id="jsonFile" value="C:/Users/Napat/Downloads/Test.json" />
+    	<input type="file" id="testFile" value="C:/Users/Napat/Downloads/stock_people.png" />
+        <button id="btnUpload" type="button">Test MultipartForm</button>
+    </div>     
+</div>
+    
+</body>
+</html>

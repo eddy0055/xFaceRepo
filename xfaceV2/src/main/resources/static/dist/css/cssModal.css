@@ -1,0 +1,152 @@
+/* style from login transparent */
+
+.boxNew{
+	position : absolute;
+    top: 50%;
+    left: 0%;
+    width: 600px;
+    padding: 0px;
+    background-color: #f9f9f9;
+	border-radius: 3px;
+	
+	/*top : 50%; */
+	/*left : 40%; */ 
+	/*transform : translate(-50px,-50px); */
+	/* width : 400px; */ 
+	/*padding : 20px; */
+	/*background : rgba(0,0,0,.8); 
+	box-sizing : border-box;
+	box-shadow : 0 15px 25px rgba(0,0,0,.5);
+	border-radius: 10px; */
+}
+
+.boxNew h2{
+	margin:0; 
+	padding :0; 
+	color : black; /* color h2 login */
+	text-align: center;
+}
+
+.boxNew h4{
+	color:white;
+}
+
+/*
+.boxHeader{
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+*/
+
+
+
+
+.boxHeader {
+    padding: 20px;
+    background-color: #3c8dbc;
+    border-bottom: 2px solid #0c118c;
+    border-radius: 3px;
+}
+
+
+.boxNew .inputBox{
+	position:relative;
+}
+
+.boxNew .inputBox input{
+	width:100%;
+	padding : 10px 0;
+	font-size:16px;
+	color : black; /* color text inbox */
+	letter-spacing:1px;
+	margin-bottom : 30px;
+	border : none;
+	border-bottom : 1px solid #367fa9; /* change line input box color */
+	outline : none; 
+	background: transparent;
+}
+
+.boxNew .inputBoxDisable input{
+	width:100%;
+	padding: 10px 0; 
+	font-size:16px;
+	color:red;/* color text input */
+	letter-spacing:1px;
+	margin-bottom:30px; 
+	border : none; 
+	border-bottom:1px solid red;
+	outline: none;
+	background: transparent;
+}
+
+/*
+.boxNew .inputBoxDisable input{
+	width:100%;
+	padding: 10px 0; 
+	font-size:16px;
+	color:black;
+	letter-spacing:1px;
+	margin-bottom:30px; 
+	border : none; 
+	border-bottom:1px solid red;
+	outline: none;
+	background: transparent;
+}
+*/
+
+/* border-bottom Black*/
+
+
+.boxNew .inputBox label{
+	position : absolute;
+	top : 0;
+	left : 0;
+	padding : 10px 0;
+	font-size:14px;
+	color : #367fa9; /* change input lable */
+	pointer-events : none;
+	transition : .5s;
+}
+
+.boxNew .inputBoxDisable label{
+	position : absolute;
+	top : 0;
+	left : 0;
+	padding : 20px 20px;
+	font-size:14px;
+	color : #367fa9; /* change input lable */
+	/* pointer-events : none; */
+	/* transition : .5s; */
+}
+.boxNew .inputBox input:focus ~ label,
+.boxNew .inputBox input:valid ~ label{
+	top : -18px;
+	left : 0; 
+	color : #03a9f4;
+	font-size : 12px;
+}
+
+
+.boxNew .inputBoxDisable input:focus ~ label,
+.boxNew .inputBoxDisable input:valid ~ label{
+	/* top : -18px; */
+	left : 0; 
+	color : #03a9f4;
+	font-size : 12px;
+}
+
+
+.boxNew input[type="submit"]{
+	background:transparent;
+	border:none; 
+	outline : none;
+	color : #fff;
+	background: #03a9f4;
+	padding: 10px 20px;
+	cursor : pointer;
+	border-radius: 5px;
+}
+
+
+
+

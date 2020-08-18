@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{Layout}">
+<head>
+    <title>LandingPage</title>    
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="http://code.highcharts.com/highcharts-more.js"></script>
+	<link rel="stylesheet" href="/xFace/dist/css/pages/dashboard/LandingPage.css" />	
+	<script src="/xFace/dist/js/pages/dashboard/LandingPage.js"></script>
+</head>
+<body>
+	<section layout:fragment="header">
+	    <h1>LandingPage</h1>	    
+	    <ol class="breadcrumb">
+	        <li><a href="/"><i class="fa fa-dashboard"></i><span>Home</span></a></li>
+	        <li class="active"><a href="/"><span>Dashboard</span></a></li>
+	    </ol>
+	</section>
+	<div layout:fragment="content">
+		<div class="row">
+			<div class="col-md-12 text-center">
+		    	<h1>Daily Chart</h1>			    
+			</div>
+		</div>		
+		<div class="row">			
+		    <div class="col-md-1"></div>
+		    <div class="col-md-10">
+		    	<div id="chartPassengerRegister" class="chart"></div>
+		    </div>
+		    <div class="col-md-1"></div>
+		</div>		
+		<div id="imageLoader" class="loader" style="display:none;"></div>
+	</div>
+</body>
+</html>

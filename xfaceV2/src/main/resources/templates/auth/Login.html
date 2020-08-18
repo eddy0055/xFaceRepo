@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="/xFace/dist/img/xface_logo.png">
+    <title>xFace - Login</title> 
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="/xFace/plugins/bootstrap3.3.6/css/bootstrap.min.css" />
+    <!-- style for Login -->
+    <link rel="stylesheet" href="/xFace/dist/css/cssLogin.css"/>     
+    <!-- jQuery 3 --> 
+	<script src="/xFace/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+	<!-- Bootstrap 3.3.7 --> 
+	<script src="/xFace/plugins/bootstrap3.3.6/js/bootstrap.min.js"></script>
+	<script src="/xFace/dist/js/global-script.js"></script>
+	<script src="/xFace/dist/js/pages/auth/Login.js"></script>
+	
+</head>
+<body>		
+	<div class="row" style="margin-top: 100px;">
+		<div class="col-lg-4 col-md-10 col-sm-10 col-xs-10 col-sm-offset-1 col-lg-offset-2 col-md-offset-1 col-xs-offset-1" style="background-color:#367fa9;height:400px;padding-right:0px; padding-left:0px;">
+			<!-- .col-xs-4 .col-sm-4 .col-lg-4 -->
+			<img src="/xFace/dist/img/NewFace02.jpg" width="100%" height="100%"> 
+		</div>
+    	<div class="col-lg-4 col-md-10 col-sm-10 col-xs-10 col-lg-offset-0 col-md-offset-0 col-sm-offset-1 col-xs-offset-1" style="background-color: white;height:400px;">
+			<div class="box">
+				<form id="formLogin" action="/xFace/auth/login" method="post">
+				<h3 align="center"> xFace Login</h3>
+					<div class="inputBox">
+						<br>
+						<input type="text" name="username" id="userName" required="">
+						<label>UserName</label> 
+					</div> 
+					<div class="inputBox">
+						<br>
+						<input type="password" name="password" id="userPwd" required="">
+						<label> Password </label>
+					</div> 
+					<div>
+						<div class="form-group has-feedback">
+	      					<p id="errorUserNameBlank" hidden>Please enter username</p>
+	      					<p id="errorPwdBlank" hidden>Please enter password</p>
+	      				</div>
+						<div id="divLoginResult" class="alert alert-danger alert-dismissible fade in" th:if="${param.error}">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							<strong>Error!</strong> <span th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">Error return from login module</span>
+						</div>
+						<div id="divDisplayError"></div>
+							<p id="errorUserNameBlank" hidden>Please enter username</p>
+							<p id="errorPwdBlank" hidden>Please enter password</p>
+					</div>
+					<div>
+			 			<button type="submit" class="btn btn-primary btn-lg">Login</button>
+						&nbsp;&nbsp;
+						<button type="button" id="btnForgetPwd" class="btn btn-warning btn-block btn-flat">Forget Password</button>
+						<!--  <button type="button" id="btnForgetPwd" class="btn btn-warning btn-lg">Forget Password</button> -->
+					</div>
+				</form>
+			</div>
+		</div>
+ 	</div>
+	<br><br>
+  	<div id="imageLoader" class="loader"></div>
+</body>
+</html>

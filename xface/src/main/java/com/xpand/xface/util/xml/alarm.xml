@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<common-info>
+		<task-id>152049112230411788</task-id>
+		<camera-id>04224890000000000101#a37e614706cd4e00a0561b086045aaa5</camera-id>
+		<camera-name>3_4_121_131</camera-name>
+		<camera-index>641</camera-index>
+		<vstation-sn></vstation-sn>
+		<vstation-name></vstation-name>
+		<vstation-index>-2</vstation-index>
+		<case-id>-2</case-id>
+		<case-file-id></case-file-id>
+		<slice-num>0</slice-num>
+		<source>1</source>
+		<source-system-id>4</source-system-id>
+		<resolution>352,288</resolution>
+		<alarm-id>8c853748236b11e88000845b12436528114501</alarm-id>
+		<alarm-level>1</alarm-level>
+		<alarm-time>1520580000031</alarm-time>
+		<alarm-type>1</alarm-type>
+		<alarm-pic-name>8c853748236b11e88000845b12436528114501.jpg</alarm-pic-name>
+		<ctime>1520580546081</ctime>
+		<rule-type>17</rule-type>
+		<confirm>1</confirm>
+		<closed>0</closed>
+		<object-id>0</object-id>
+		<video-type>0</video-type>
+		<object-type>0</object-type>
+		<suspect-id>5aa0b1679be40e612f1a3324</suspect-id>
+		<blkgrp-id>5aa0ac5a9be40e612f1a3319</blkgrp-id>
+		<blacklist-id>5aa0ae0a9be40e612f1a331e</blacklist-id>
+		<domain-code>b7b02137a87f44fdb5440fc3aa27b3b2</domain-code>
+	</common-info>
+	<private-info>
+		<meta-data db_name="vcm_lpr_info">
+			<color index="true" type="int">9</color>
+			<vehiclebrand index="true" type="int">0</vehiclebrand>
+			<vehicleSub index="true" type="int">0</vehicleSub>
+			<year index="true" type="string"></year>
+			<ptype index="true" type="int">0</ptype>
+			<pcolor index="true" type="int">9</pcolor>
+			<pnr index="true" type="string">浙AZ1680</pnr>
+			<cartype index="true" type="int">0</cartype>
+			<direc index="true" type="int">3</direc>
+			<rect>
+				<left type="int" index="false">20</left>
+				<top type="int" index="false">352</top>
+				<right type="int" index="false">518</right>
+				<bottom type="int" index="false">850</bottom>
+			</rect>
+		</meta-data>
+		<pic>
+			<casefile-id>5aa237c29be40ea455b1aca5</casefile-id>
+			<_fileId>/sre_storage/data1/s2/omm_spc/omm_alarm/20180309/15/8bf94704-0e47-4bec-8a6f-6983a7c56f73</_fileId>
+			<_startPos>0</_startPos>
+			<_thumbLen>45542</_thumbLen>
+			<_len>438801</_len>
+			<_m_id>2001</_m_id>
+			<_s_inx>0</_s_inx>
+			<_imageUrl>https://3.106.10.111/sdk_service/rest/image-library/downloadImage?fileUuid=5aa237c29be40ea455b1aca5&amp;mpIp=3.106.10.111&amp;path=/sre_storage/data1/s2/omm_spc/omm_alarm/20180309/15/8bf94704-0e47-4bec-8a6f-6983a7c56f73&amp;mode=1&amp;start=0&amp;thumLength=45542&amp;length=438801&amp;isthum=0</_imageUrl>
+			<_thumImageUrl>https://3.106.10.111/sdk_service/rest/image-library/downloadImage?fileUuid=5aa237c29be40ea455b1aca5&amp;mpIp=3.106.10.111&amp;path=/sre_storage/data1/s2/omm_spc/omm_alarm/20180309/15/8bf94704-0e47-4bec-8a6f-6983a7c56f73&amp;mode=1&amp;start=0&amp;thumLength=45542&amp;length=438801&amp;isthum=1</_thumImageUrl>
+		</pic>
+	</private-info>
+</content>

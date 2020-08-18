@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<common-info>
+		<task-id>152991357612143009</task-id>
+		<camera-id>02117790000000000101#ab8df621bf3f4d91b61ce8cf5100c01a</camera-id>
+		<camera-name>192_168_2_201</camera-name>
+		<camera-index>7</camera-index>
+		<vstation-sn></vstation-sn>
+		<vstation-name></vstation-name>
+		<vstation-index>-2</vstation-index>
+		<case-id>-2</case-id>
+		<case-file-id></case-file-id>
+		<slice-num>0</slice-num>
+		<source>1</source>
+		<source-system-id>4</source-system-id>
+		<resolution></resolution>
+		<alarm-id>000003412380707777757184</alarm-id>
+		<alarm-level>1</alarm-level>
+		<alarm-time>1530277010911</alarm-time>
+		<alarm-type>4</alarm-type>
+		<alarm-pic-name>000003412380707777757184.jpg</alarm-pic-name>
+		<ctime>1530277013003</ctime>
+		<rule-type>16</rule-type>
+		<confirm>0</confirm>
+		<closed>0</closed>
+		<object-id>3412380707777757184</object-id>
+		<face-id></face-id>
+		<video-type>0</video-type>
+		<object-type>3</object-type>
+		<alarm-pic-tag></alarm-pic-tag>
+		<alarm-pic-groupname></alarm-pic-groupname>
+		<alarm-pic-groupid></alarm-pic-groupid>
+		<alarm-pic-viptag></alarm-pic-viptag>
+		<red-alarm-id></red-alarm-id>
+		<suspect-id></suspect-id>
+		<blkgrp-id></blkgrp-id>
+		<blacklist-id></blacklist-id>
+		<domain-code>c403e02f502443a4adac058b32fb1693</domain-code>
+	</common-info>
+	<private-info>
+		<meta-data db_name="vcm_face_info">
+			<scr type="int" index="false"></scr>
+			<algorithm-code>0104010101</algorithm-code>
+			<algorithm-name>yitu_gate_face_sdk</algorithm-name>
+			<alarm-mold type="int">0</alarm-mold>
+			<alarm-match type="int">0</alarm-match>
+			<pos>
+				<left type="int" index="false">865</left>
+				<top type="int" index="false">657</top>
+				<right type="int" index="false">1219</right>
+				<bottom type="int" index="false">1011</bottom>
+			</pos>
+		</meta-data>
+		<pic>
+			<casefile-id>3412380707777757184</casefile-id>
+			<_fileId>/sre_storage/data1/s2/omm_spc/omm_face/20180629/20/320f21a6-f4d3-43be-bb16-643be347b1c6</_fileId>
+			<_startPos>0</_startPos>
+			<_thumbLen>78536</_thumbLen>
+			<_len>385811</_len>
+			<_m_id>2001</_m_id>
+			<_s_inx>0</_s_inx>
+			<_imageUrl>https://192.168.2.53/sdk_service/rest/image-library/downloadImage?fileUuid=5b362c95a2ef2e2e0c06eda7&amp;mpIp=192.168.2.53&amp;path=/sre_storage/data1/s2/omm_spc/omm_face/20180629/20/320f21a6-f4d3-43be-bb16-643be347b1c6&amp;mode=1&amp;start=0&amp;thumLength=78536&amp;length=385811&amp;isthum=0</_imageUrl>
+			<_thumImageUrl>https://192.168.2.53/sdk_service/rest/image-library/downloadImage?fileUuid=5b362c95a2ef2e2e0c06eda7&amp;mpIp=192.168.2.53&amp;path=/sre_storage/data1/s2/omm_spc/omm_face/20180629/20/320f21a6-f4d3-43be-bb16-643be347b1c6&amp;mode=1&amp;start=0&amp;thumLength=78536&amp;length=385811&amp;isthum=1</_thumImageUrl>
+			<feature-value>/////6sAAAAAAQAAAAAAAOxilPw84ikGnpIP5kXiWdzyroDsOPPeCod/BPE99SoXB2acL0sStNt/iuHTKeMm0eyRbdax4l4Rrm/dOQ/oFs3RVFJDfNGZT1S6IEbzO+xA0kJqq5IkiLcpQLJbCyTlT0HAMnlhr3GeKji9nQyy4mR52NCLcVaVgBgmc4AroySIbhQOf6eLUXgIEZ5iPZPJhYH6+IC9fbeCCQZ+n1WBVohtDfCrM5TsUOv2hq5Qj0KpZ+IWuixiKk/ZxFa3mmSOWKQpIzILSR0tMC5CLolXjzBEMeba8k3pK7I8zSR1RI3COUK9EOrL5Beus90BcOhl5CWgofDkKQ3hhkI74qkmUf0=</feature-value>
+			<feature-length>364</feature-length>
+			<feature-id>3412380707777757184</feature-id>
+			<feature-index></feature-index>
+			<is-url>N</is-url>
+		</pic>
+	</private-info>
+	<third-field>
+		<field-len>0</field-len>
+		<field-value></field-value>
+	</third-field>
+</content>

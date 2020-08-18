@@ -1,0 +1,82 @@
+<!-- sidebar: style can be found in sidebar.less -->
+<section class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+        <div class="pull-left image">        	
+            <img src="/xFace/dist/img/user9-128x128.png" class="img-circle" alt="User Image" />
+        </div>
+        <div class="pull-left info">
+            <p>[[${#httpServletRequest.remoteUser}]]</p>             
+            <i class="fa fa-circle text-success">Online</i> 
+        </div>
+    </div>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+        <li class="header">Main menu</li>
+        <!-- <li id="mnuDB" class="treeview menuLink"> -->
+        <li class="treeview menuLink" th:classappend="${activeMenu=='mnuDB'} ? active">        
+            <a href="#">
+                <i class="fa fa-gears"></i> <span>Dashboard</span>
+                <span class="pull-right-container">
+          			<i class="fa fa-angle-left pull-right"></i>
+        		</span>
+            </a>
+            <ul class="treeview-menu">                      	
+            	<li th:class="${activeSubMenu=='mnuDBLP'} ? active"><a href="#" data-url="/xFace/dashboard/landingPage" class="subMenuLink"><i class="fa fa-cog"></i><span> Landing Page</span></a></li>
+            	<li th:class="${activeSubMenu=='mnuDBDS'} ? active"><a href="#" data-url="/xFace/dashboard/dailyStatistics" class="subMenuLink"><i class="fa fa-cog"></i><span> Daily Statistics</span></a></li>            	                               
+            	<li th:class="${activeSubMenu=='mnuDBDSBT'} ? active"><a href="#" data-url="/xFace/dashboard/dailyStatisticsByTime" class="subMenuLink"><i class="fa fa-cog"></i><span> Daily Statistics By Time</span></a></li>                
+            </ul>
+        </li>        
+        <li class="treeview menuLink" th:classappend="${activeMenu=='mnuPS'} ? active">
+            <a href="#">
+                <i class="fa fa-gears"></i> <span>Passenger</span>
+                <span class="pull-right-container">
+          			<i class="fa fa-angle-left pull-right"></i>
+        		</span>
+            </a>
+            <ul class="treeview-menu">                      	
+            	<li th:class="${activeSubMenu=='mnuPSRG'} ? active"><a href="#" data-url="/xFace/person/personRegister" class="subMenuLink"><i class="fa fa-cog"></i><span> Register</span></a></li>
+            	<li th:class="${activeSubMenu=='mnuPSAH'} ? active"><a href="#" data-url="/xFace/person/alarmHistory" class="subMenuLink"><i class="fa fa-cog"></i><span> Alarm History</span></a></li>            	
+                <li th:class="${activeSubMenu=='mnuPSAM'} ? active"><a href="#" data-url="/xFace/person/alarmMonitor" class="subMenuLink"><i class="fa fa-cog"></i><span> Alarm Monitor</span></a></li>
+                <li th:class="${activeSubMenu=='mnuPSAMIDV'} ? active"><a href="#" data-url="/xFace/person/alarmMonitorIDV" class="subMenuLink"><i class="fa fa-cog"></i><span> Alarm MonitorIDV</span></a></li>
+                <li th:class="${activeSubMenu=='mnuPSPT'} ? active"><a href="#" data-url="/xFace/person/personTrace" class="subMenuLink"><i class="fa fa-cog"></i><span> Person Trace</span></a></li>                
+            </ul>
+        </li>                                    
+        <li class="treeview menuLink" th:classappend="${activeMenu=='mnuUM'} ? active">
+            <a href="#">
+                <i class="fa fa-users"></i> <span>User Management</span>
+                <span class="pull-right-container">
+          			<i class="fa fa-angle-left pull-right"></i>
+        		</span>
+            </a>
+            <ul class="treeview-menu">
+                <li th:class="${activeSubMenu=='mnuUMUS'} ? active"><a href="#" data-url="/xFace/user/userManage" class="subMenuLink"><i class="fa fa-user"></i><span> Users</span></a></li>
+                <li th:class="${activeSubMenu=='mnuUMRL'} ? active"><a href="#" data-url="/xFace/user/roleInfo" class="subMenuLink"><i class="fa fa-lock"></i><span> Roles</span></a></li>                
+            </ul>
+        </li>        
+        <li class="treeview menuLink" th:classappend="${activeMenu=='mnuCFG'} ? active">
+            <a href="#">
+                <i class="fa fa-gears"></i> <span>Configuration</span>
+                <span class="pull-right-container">
+          			<i class="fa fa-angle-left pull-right"></i>
+        		</span>
+            </a>
+            <ul class="treeview-menu">                      	
+            	<li th:class="${activeSubMenu=='mnuCFGAPP'} ? active"><a href="#" data-url="/xFace/cfg/appCfg" class="subMenuLink"><i class="fa fa-cog"></i><span> Application Configure</span></a></li>            	
+               	<li th:class="${activeSubMenu=='mnuCFGBOAT'} ? active"><a href="#" data-url="/xFace/cfg/boatInfo" class="subMenuLink"><i class="fa fa-cog"></i><span> Boat Information</span></a></li>
+                <li th:class="${activeSubMenu=='mnuCFGGI'} ? active"><a href="#" data-url="/xFace/cfg/gateInfo" class="subMenuLink"><i class="fa fa-cog"></i><span> Gate Information</span></a></li>
+                <li th:class="${activeSubMenu=='mnuCFGIC'} ? active"><a href="#" data-url="/xFace/cfg/hwIPC" class="subMenuLink"><i class="fa fa-cog"></i><span> IP Camera</span></a></li>                
+            	<li th:class="${activeSubMenu=='mnuHTML'} ? active"><a href="#" data-url="/xFace/cfg/htmlPage" class="subMenuLink"><i class="fa fa-cog"></i><span> Html Page</span></a></li> 
+            	<li th:class="${activeSubMenu=='mnuLOCATION'} ? active"><a href="#" data-url="/xFace/cfg/locationMap" class="subMenuLink"><i class="fa fa-cog"></i><span> Location Map</span></a></li> 
+            	<li th:class="${activeSubMenu=='mnuPERSONTIT'} ? active"><a href="#" data-url="/xFace/cfg/personTitle" class="subMenuLink"><i class="fa fa-cog"></i><span> Person Title</span></a></li> 
+            	<li th:class="${activeSubMenu=='mnuPERSONCER'} ? active"><a href="#" data-url="/xFace/cfg/personCertificate" class="subMenuLink"><i class="fa fa-cog"></i><span> Person Certificate</span></a></li> 
+            	<li th:class="${activeSubMenu=='mnuPERSONCAT'} ? active"><a href="#" data-url="/xFace/cfg/personCatgory" class="subMenuLink"><i class="fa fa-cog"></i><span>Person Category</span></a>
+            	<li th:class="${activeSubMenu=='mnuPERSONNAT'} ? active"><a href="#" data-url="/xFace/cfg/personNationality" class="subMenuLink"><i class="fa fa-cog"></i><span>Person Nationality</span></a>
+            </ul>
+        </li>
+        <li id="mnuCPWD"><a href="#" data-url="/xFace/auth/changePwd" data-submnu="mnuCPWD" data-mnu="mnuCPWD" class="subMenuLink"><i class="fa fa-unlock-alt"></i> <span>Change Password</span></a></li>        
+        <li id="mnuOUT"><a href="#" data-url="/xFace/logout" data-submnu="mnuOUT" data-mnu="mnuOUT" class="subMenuLink"><i class="fa fa-power-off"></i> <span>Logout</span></a></li>
+    </ul>
+</section>
+<!-- /.sidebar -->

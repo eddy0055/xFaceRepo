@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xml:lang="en" lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{Layout}">
+<head>
+    <title>Delete Register</title>  
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />    
+	<link rel="stylesheet" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css" />
+	<!-- <script src="/plugins/jQuery/jQuery-2.2.0.min.js"></script> -->    
+	<script src="/plugins/jqgrid/i18n/grid.locale-en.js" type="text/javascript"></script>
+	<script src="/plugins/jqgrid/jquery.jqgrid.min.js"></script>
+	
+    <script src="/dist/js/pages/DeleteRegister.js"></script> 
+    
+    <script src="/dist/validator/jquery.form.validator.min.js"></script>
+	<link rel="stylesheet" href="/dist/validator/validator.css"/>
+	<link rel="stylesheet" href="/dist/validator/Xface-loading.css"/>
+	<script src="/dist/validator/security.js"></script>
+	<script src="/dist/validator/file.js"></script>
+	
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>
+        Delete Register
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+        <li>Register</li>
+        <li class="active"><a href="/Register/DeleteRegister"> Delete Register </a></li>
+    </ol>
+</section>
+<div layout:fragment="content">
+    <!-- Main row -->
+    <div class="row">
+	    <div class="col-xs-12">
+	        <div class="box box-primary">
+	            <div class="box-header">
+	            </div>
+	            <!-- /.box-header -->
+	            <div class="box-body">
+	                <div class="loader"></div>
+	                <table id="data-table" ></table>
+	                <div id="pager"></div>
+	               
+	            <!-- /.box-body -->
+	            </div>
+	        <!-- /.box -->
+	    	</div>		
+    	</div>
+    </div>
+    <!-- /.row (main row) -->  
+   
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".loader").fadeOut("slow");
+});
+</script>    
+
+
+<!-- Modal Success -->         
+<div id="Delete-Modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Delete Success</h4>
+      </div>
+      <div class="modal-body">
+        <p>Delete Record Success</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+</body>
+</html>
+    
+    
+    
+    
+

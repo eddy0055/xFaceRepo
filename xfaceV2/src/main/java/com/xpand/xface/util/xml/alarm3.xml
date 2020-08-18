@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<common-info>
+		<task-id>152991357612143009</task-id>
+		<camera-id>02117790000000000101#ab8df621bf3f4d91b61ce8cf5100c01a</camera-id>
+		<camera-name>192_168_2_201</camera-name>
+		<camera-index>7</camera-index>
+		<vstation-sn></vstation-sn>
+		<vstation-name></vstation-name>
+		<vstation-index>-2</vstation-index>
+		<case-id>-2</case-id>
+		<case-file-id></case-file-id>
+		<slice-num>0</slice-num>
+		<source>1</source>
+		<source-system-id>4</source-system-id>
+		<resolution></resolution>
+		<alarm-id>000000025673680922951680</alarm-id>
+		<alarm-level>1</alarm-level>
+		<alarm-time>1530270630798</alarm-time>
+		<alarm-type>4</alarm-type>
+		<alarm-pic-name>000009176988123739799552.jpg</alarm-pic-name>
+		<ctime>1530270631219</ctime>
+		<rule-type>16</rule-type>
+		<confirm>1</confirm>
+		<closed>0</closed>
+		<object-id>9176988123739799552</object-id>
+		<face-id>25673307730547972</face-id>
+		<video-type>0</video-type>
+		<object-type>3</object-type>
+		<alarm-pic-tag></alarm-pic-tag>
+		<alarm-pic-groupname>Blacklist</alarm-pic-groupname>
+		<alarm-pic-groupid>5ab65f36a2ef2e9302a8811a</alarm-pic-groupid>
+		<alarm-pic-viptag></alarm-pic-viptag>
+		<red-alarm-id></red-alarm-id>
+		<suspect-id>5ab667a8a2ef2ee16cac1b3d,5b07e04ba2ef2e0930cea4b9,5b331a47a2ef2e3e744569cc</suspect-id>
+		<blkgrp-id>5ab65f36a2ef2e9302a8811a</blkgrp-id>
+		<blacklist-id>5b35bcc2a2ef2e3e74456aff</blacklist-id>
+		<domain-code>c403e02f502443a4adac058b32fb1693</domain-code>
+	</common-info>
+	<private-info>
+		<meta-data db_name="vcm_face_info">
+			<scr type="int" index="false">98</scr>
+			<algorithm-code>0104010101</algorithm-code>
+			<algorithm-name>yitu_gate_face_sdk</algorithm-name>
+			<alarm-mold type="int">2</alarm-mold>
+			<alarm-match type="int">1</alarm-match>
+			<pos>
+				<left type="int" index="false">148</left>
+				<top type="int" index="false">785</top>
+				<right type="int" index="false">470</right>
+				<bottom type="int" index="false">1080</bottom>
+			</pos>
+		</meta-data>
+		<pic>
+			<casefile-id>9176988123739799552</casefile-id>
+			<_fileId>/sre_storage/data1/s2/omm_spc/omm_face/20180629/19/1af1b84f-3f2a-488d-aa0a-d6cfb2b7ddb8</_fileId>
+			<_startPos>0</_startPos>
+			<_thumbLen>43405</_thumbLen>
+			<_len>324382</_len>
+			<_m_id>2001</_m_id>
+			<_s_inx>0</_s_inx>
+			<_imageUrl>https://192.168.2.53/sdk_service/rest/image-library/downloadImage?fileUuid=5b3613a7a2ef2e2e0c06ed96&amp;mpIp=192.168.2.53&amp;path=/sre_storage/data1/s2/omm_spc/omm_face/20180629/19/1af1b84f-3f2a-488d-aa0a-d6cfb2b7ddb8&amp;mode=1&amp;start=0&amp;thumLength=43405&amp;length=324382&amp;isthum=0</_imageUrl>
+			<_thumImageUrl>https://192.168.2.53/sdk_service/rest/image-library/downloadImage?fileUuid=5b3613a7a2ef2e2e0c06ed96&amp;mpIp=192.168.2.53&amp;path=/sre_storage/data1/s2/omm_spc/omm_face/20180629/19/1af1b84f-3f2a-488d-aa0a-d6cfb2b7ddb8&amp;mode=1&amp;start=0&amp;thumLength=43405&amp;length=324382&amp;isthum=1</_thumImageUrl>
+			<feature-value>/////6sAAAAAAQAAAAAAAP1hlfwkG9YMhZwN5UXrTdkDrJMbN/jfHoaH+/fA9C8IHWWHMbMLQdZmgv/dJv7WLxtrmti046QipWDELg/jCcbRT1xFf8OZS1usJVjmJu9Ez0xrpZsxgLokQLhZDiDmVEA9ymZ+sYSSJharlBK3/2JEPMpyaVOXgg7RbpAjpyObYxQPfKCVX3oeGa18OWjOc4/16JtCckqaBAJ9mUmCuIxVCf+pMovSX+cLl6lSmVGlbeEYtipkKVbV/1q9kZ+eYFTWIjYOQQA2NyxWJpBAhDdLMdjW9ULkKKIw09iEUnnAO1G3D+vZ4xirst8dZtZk8dGioPDmKRnqj1U75q4hU/4=</feature-value>
+			<feature-length>364</feature-length>
+			<feature-id>9176988123739799552</feature-id>
+			<feature-index></feature-index>
+			<is-url>N</is-url>
+		</pic>
+	</private-info>
+	<third-field>
+		<field-len>0</field-len>
+		<field-value></field-value>
+	</third-field>
+</content>

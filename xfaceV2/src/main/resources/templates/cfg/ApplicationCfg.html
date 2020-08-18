@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xml:lang="en" lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{Layout}">
+<head>
+    <title>Application Config</title>  
+    <script src="/xFace/dist/js/pages/cfg/ApplicationCfg.js"></script>	
+	<style> 
+	
+/* style from login transparent */
+
+.box{
+	position : absolute;
+	/*top : 50%; */
+	left : 60%; 
+	transform : translate(-50px,-50px);
+	/* width : 400px; */ 
+	padding : 40px;
+	/*background : rgba(0,0,0,.8); 
+	box-sizing : border-box;
+	box-shadow : 0 15px 25px rgba(0,0,0,.5);
+	border-radius: 10px; */
+}
+.box h2{
+	margin:0; 
+	padding :0; 
+	color : black; /* color h2 login */
+	text-align: center;
+}
+.box .inputBox{
+	position:relative;
+}
+
+.box .inputBox input{
+	width:100%;
+	padding : 10px 0;
+	font-size:16px;
+	color : black; /* color text inbox */
+	letter-spacing:1px;
+	margin-bottom : 30px;
+	border : none;
+	border-bottom : 1px solid #367fa9; /* change line input box color */
+	outline : none; 
+	background: transparent;
+}
+.box .inputBox label{
+	position : absolute;
+	top : 0;
+	left : 0;
+	padding : 10px 0;
+	font-size:16px;
+	color : #367fa9; /* change input lable */
+	pointer-events : none;
+	transition : .5s;
+}
+.box .inputBox input:focus ~ label,
+.box .inputBox input:valid ~ label{
+	top : -18px;
+	left : 0; 
+	color : #03a9f4;
+	font-size : 12px;
+}
+.box input[type="submit"]{
+	background:transparent;
+	border:none; 
+	outline : none;
+	color : #fff;
+	background: #03a9f4;
+	padding: 10px 20px;
+	cursor : pointer;
+	border-radius: 5px;
+}
+
+
+	
+	
+	
+	
+	
+	</style>		
+</head>
+<body>	
+	<div class="notifications top-right"></div>
+	<section layout:fragment="header">								
+	    <h1>Application Configure</h1>
+	    <ol class="breadcrumb">
+	        <li><a href="#" data-url="/xFace/dashboard/landingPage" class="subMenuLink"><i class="fa fa-home"></i> <span>Home</span></a></li>
+	        <li><span>Configuration</span></li>
+	        <li class="active"><a href="#" data-url="/xFace/cfg/appCfg" class="subMenuLink"><span>Application Configure</span></a></li>
+	    </ol>
+	</section>
+	<div layout:fragment="content">
+		<div class="panel-group" id="pageOption">
+			<div class="panel panel-default">
+		    	<div class="panel-heading" style="background-color:#3c8dbc !important;">
+		        	<h4 class="panel-title" style="color:#fff !important;">
+		          		<a data-toggle="collapse" href="#collapseOptionBody" id="linkPageOption">Option</a>
+		        	</h4>
+		      	</div>
+		      	<div id="collapseOptionBody" class="panel-collapse collapse in">
+			        <div class="panel-body">
+						<form>
+							<div class="form-inline button_generic_operation">    			
+								<!--  <button type="button" id="btnAdd" class="btn btn-primary form-control">Add New</button> -->	                
+				    			<button type="button" id="btnEdit" class="btn btn-primary form-control">Edit</button>    
+								<!--  <button type="button" id="btnDelete" class="btn btn-danger form-control" data-toggle="modal" data-target="#confirm-delete">Delete</button> -->          
+							</div>		
+						</form>
+						<!-- end of panel-body -->
+					</div>
+					<!-- end of collapseOptionBody -->
+				</div>
+				<!-- end of panel-default -->
+			</div>
+			<!-- end of panel-group -->
+		</div>
+	    <!-- Main row -->
+	    <div class="row">
+		    <div class="col-xs-12">		        
+	            <div class="box-body">		                
+	                <table id="data-table" class="display" style="width:100%">
+	                	 <thead>
+				            <tr>
+				                <th>Value1</th>
+				                <th>Value2</th>
+				                <th>Value3</th>	
+				                <th>Description</th>					                
+				            </tr>
+				        </thead>
+				        <tfoot>
+				            <tr>
+				                <th>Value1</th>
+				                <th>Value2</th>
+				                <th>Value3</th>		
+				            	<th>Description</th>
+				            </tr>
+				        </tfoot>
+	                </table>	
+	                <div id="pager"></div>		                
+	                <div id="imageLoader" class="loader"></div>		            		            	
+            	</div>	        			
+	    	</div>
+	    </div>
+	    <!-- /.row (main row) -->  
+	    
+	    
+	    <!-- from add/edit -->
+		<div class="container">
+		 	<!-- [ Modal #1 ] -->
+		  	<div class="modal fade" id="formModal" tabindex="-1">
+		    	<div class="modal-dialog">
+		      		<div class="modal-content">
+		        		<button type="button" class="close" data-dismiss="modal"><i class="icon-xs-o-md"></i></button>
+	        			<div class="box" >
+	        			
+	        			<div class="modal-header">
+	          				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	          				<h4 class="modal-title caps"><strong>Editing Appication Config</strong></h4>
+	        			</div>
+	        			<div class="modal-body">		        
+	        				<form class="form-horizontal">
+								<div class="box-body">
+									<div class="form-group">
+			                  			<label for="txtRoleCode" class="col-sm-3 control-label">AppKey</label>				                  
+			                  			<div class="col-sm-9">
+			                    			<input type="text" id="txtAppKey" class="form-control" placeholder="AppKey" />
+							  			</div>		                  
+			                		</div>	
+									<div class="form-group">
+			                  			<label for="txtRoleCode" class="col-sm-3 control-label">Description</label>				                  
+			                  			<div class="col-sm-9">
+			                    			<input type="text" id="txtAppDesc" class="form-control" placeholder="Application Description" />
+							  			</div>		                  
+			                		</div>	
+			                		<div class="form-group">
+			                  			<label for="txtRoleName" class="col-sm-3 control-label">Value1</label>				                  
+			                  			<div class="col-sm-9">
+			                    			<input type="text" id="txtAppValue1" class="form-control" placeholder="AppValue1"/> 
+							  			</div>		                  
+			                		</div>	
+			                		<div class="form-group">
+			                  			<label for="txtDefaultPage" class="col-sm-3 control-label">Value2</label>				                  
+			                  			<div class="col-sm-9">
+			                    			<input type="text" id="txtAppValue2" class="form-control" placeholder="AppValue2"/>
+							  			</div>		                  
+			                		</div>	
+			                		<div class="form-group">
+			                  			<label for="txtDefaultPage" class="col-sm-3 control-label">Value3</label>				                  
+			                  			<div class="col-sm-9">
+			                    			<input type="text" id="txtAppValue3" class="form-control" placeholder="AppValue3"/>
+							  			</div>		                  
+			                		</div>	
+			                		<div class="form-group">
+			                			<div class="box box-primary">
+                    						<center><label> Picture </label></center>
+			                				<div class="form-group col-sm-5">	       											                                                           
+	                      						<img id="imgUploadPerview" src="/xFace/dist/img/noimage.gif" style="align:center;width: 180px; height: 180px; border: 1px solid #ddd;">				                      									
+	   										</div>
+	   										<div class="form-group col-sm-3">
+	   											<div id="loading"></div>
+	                       						<font color="red"><b>*</b></font>Max File Size 5MB <br>	                       									
+        										<label class="btn btn-info">
+    												Choose File... <input type="file" id="btnUploadFile" hidden>
+												</label>&nbsp;
+        										<span class="label label-info" id="lblUploadFile"></span>			
+	   										</div>
+			                			</div>
+			                		</div>
+			                					                	               
+				                	<!--  <div class="form-group" style="overflow-y: scroll; max-height:220px;margin-right:10px;margin-left:10px;">
+				                		<!--  Permission -->
+				                		<!--  <div id="Group"></div>				                	
+				                		<div id="treeview-permission" class=""></div>					                		               
+				                	</div>  -->
+		                		</div>
+		               		</form>        
+		               	<!-- end div box -->
+		               	</div>
+		               		
+	        			</div>
+	        			<div id="divDisplayError" style="width:90%; margin-left: auto; margin-right: auto;"></div>
+		        		<div class="modal-footer">
+		          			<div id="div8"></div>
+		          			<!--  <button type="button" id="btnCheckAll" class="btn btn-primary" data-toggle="modal">Check All</button>
+		          			<button type="button" id="btnUnCheckAll" class="btn btn-warning" data-toggle="modal">Uncheck All</button> -->
+		          			<button type="button" id="btnSave" class="btn btn-info" data-toggle="modal">Save</button>
+		          			<button type="button" id="btnClose" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+		        		</div>
+	      			</div>
+	    		</div>
+	  		</div>		
+		</div>
+	</div>   		 	       
+</body>
+</html>

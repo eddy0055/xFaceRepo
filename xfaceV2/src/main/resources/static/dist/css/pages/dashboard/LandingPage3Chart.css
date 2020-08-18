@@ -1,0 +1,95 @@
+body, input, select, textarea, button, .ui-btn{
+	font-size: 14px;
+    line-height: 1.42857143;
+    font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;	
+}
+
+
+.chart {
+	width: 100%; 
+	min-height: 450px;
+}
+.row {
+	margin:0 !important;
+}
+
+#next {
+    right: 0;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 29px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 29px;
+}
+#previous {
+    left: 0;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 29px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 29px;
+}
+#previous,#next {
+  background-color: #fff;
+  border-bottom-color: #4285F4;
+  border-bottom-style: none;
+  border-bottom-width: 0px;
+  border-left-color: rgb(66, 133, 244);
+  border-left-style: none;
+  border-left-width: 0px;
+  border-right-color: rgb(66, 133, 244);
+  border-right-style: none;
+  border-right-width: 0px;
+  border-top-color: rgb(66, 133, 244);
+  border-top-style: none;
+  border-top-width: 0px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
+  color: #a0a0a0;
+  cursor: pointer;
+  display: block;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: normal;
+  height: 58px;
+  line-height: 56px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: -29px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 50%;
+  vertical-align: middle;
+  visibility: visible;
+  width: 29px;
+  z-index: 2;
+}
+
+
+.pageButton {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+.pageButton:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.pagePreviousButton {
+  background-color: #3c8dbc;
+  color: white;
+}
+
+.pageNextButton {
+  background-color: #3c8dbc;
+  color: white;
+}
+
+.pageRoundButton {
+  border-radius: 50%;
+}

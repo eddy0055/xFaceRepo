@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xml:lang="en" lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{Layout}">
+<head>
+    <title>Alarm Monitor</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />    
+    <link rel="stylesheet" href="/xFace/dist/css/pages/person/AlarmMonitor.css" />		
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="/xFace/dist/js/pages/person/AlarmMonitor.js"></script>
+    <!-- script -->
+	<script th:inline="javascript">				
+		var webSockAccept = /*[[${webSockAccept}]]*/"wait_for_server";
+		var webSockGoodbye = /*[[${webSockGoodbye}]]*/"wait_for_server";
+		var webSockEndPoint = /*[[${webSockEndPoint}]]*/"wait_for_server";		
+		var webSockSTU = /*[[${webSockSTU}]]*/"wait_for_server";
+		var webSockUTS = /*[[${webSockUTS}]]*/"wait_for_server";
+		var noOfFace = /*[[${noOfFace}]]*/10;
+		var timerCheckConnectionMS = /*[[${timerCheckWebSocket}]]*/5000;
+		var webSocketModule = /*[[${webSocketModule}]]*/1;
+	</script>
+</head>
+<body>	
+	<div class="notifications top-right"></div>
+	<section layout:fragment="header">
+	    <h1>Alarm Monitor</h1>	    
+	    <ol class="breadcrumb">
+	        <li><a href="#" data-url="/xFace/dashboard/landingPage" class="subMenuLink"><i class="fa fa-dashboard"></i><span>Home</span></a></li>
+	        <li><span>Person</span></li>
+	        <li class="active"><a href="#" data-url="/xFace/person/alarmMonitor" class="subMenuLink"><span>Alarm Monitor</span></a></li>
+	    </ol>
+	</section>
+	<div layout:fragment="content">			
+		<div class="panel-group" id="monitorOption">
+			<div class="panel panel-default">
+		    	<div class="panel-heading" style="background-color:#3c8dbc !important;">
+		        	<h4 class="panel-title" style="color:#fff !important;">
+		          		<a data-toggle="collapse" href="#collapseOptionBody" id="linkPageOption">Monitor Option</a>
+		        	</h4>
+		      	</div>
+		      	<div id="collapseOptionBody" class="panel-collapse collapse in">
+			        <div class="panel-body">
+			        	<form>						  							 
+							<div class="form-row">							   	 		
+							    <div class="form-group col-md-3">							    	
+    								<label for="cmbOptionIPC">Gate</label>									    					      	
+									<select multiple id="cmbOptionGateInfo" name="cmbOptionGateInfo" class="form-control selectpicker">															
+									</select>
+							    </div>
+							    <div class="form-group col-md-3">							    	
+    								<label for="cmbOptionIPC">Camera</label>									    					      	
+									<select multiple id="cmbOptionIPC" name="cmbOptionIPC" class="form-control selectpicker">
+										<option value="">Please select gate first</option>															
+									</select>
+							    </div>
+							    <div class="form-group col-md-2">
+							      	<label for="txtOptionCertificateNo">Certificate</label>									    					      	
+									<input type="text" class="form-control" id="txtOptionCertificateNo">
+							    </div>
+							    <div class="form-group col-md-3">
+							      	<label for="Full Name">Full Name</label>									
+							      	<input type="text" class="form-control" id="txtOptionFullName">    					      										
+							    </div>
+							    <div class="form-group col-md-1">							    	
+    								<button type="button" id="btnOptionApply" class="btn btn-success form-control" style="margin-top:28px;">Apply</button>
+							    </div>	  	    
+							</div>														
+						</form>
+			        </div>		        	
+		      	</div>
+		    </div>
+		</div>
+		<!-- show result here -->			
+	    <div data-role="page" data-theme="b" id="divShowMonitor" class="my-page" data-url="divShowMonitor">
+	    	<!-- start face image -->
+			<div class="row background-transparent faceArea" id="faceArea"> 			
+				<!-- start content -->
+				<div class="col-sm-12">	
+					<div role="main" class="ui-content">
+						<ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
+					</div>
+				</div>
+			</div>
+	    </div>	    										
+		<div id="imageLoader" class="loader" style="display: none;"></div>
+		
+		<!-- start goto page dialog -->
+		 <!-- from go to page -->
+		<div class="container">
+		  	<div class="modal fade" id="formGotoPage" tabindex="-1" role="dialog">
+		    	<div class="modal-dialog modal-sm"  style="color:#000 !important;">
+		      		<div class="modal-content">		        		
+	        			<div class="modal-header">
+	          				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	          				<h4 class="modal-title caps">Go to page</h4>	          					          	
+	        			</div>	        			
+	        			<div class="modal-body">
+	        				<div class="box box-primary">
+	        					<div class="form-group">
+			        				<div class="col-md-5">
+			        					<label for="txtGoToPageNumber">Go to page:</label>
+			        				</div>
+			        				<div class="col-md-7">			        
+				        				<div class="input-group spinner">
+											<input type="text" class="form-control" value="1" min="1" max="5" id="txtGoToPageNumber">
+										    <div class="input-group-btn-vertical">
+										      <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+										      <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+										    </div>
+										 </div>
+									 </div>  
+								 </div>
+	        				</div>	        				
+	        			</div>
+	        			<div id="divDisplayError" style="width:90%; margin-left: auto; margin-right: auto; margin-top: 10px;"></div>
+		        		<div class="modal-footer">
+		        			<div class="row">
+		        				<div class="col-sm-6" id="lblOptionShowMaximumPage">Maximum Page:999</div>
+			          			<div class="form-inline button_generic_operation col-sm-6">
+			          				<button type="button" id="btnGoToPage" class="btn btn-info" data-toggle="modal">Go</button>
+			          				<button type="button" id="btnGoToPageClose" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+			          			</div>
+		        			</div>		        			
+		        		</div>
+	      			</div>
+	    		</div>
+	  		</div>		
+		</div> 
+		<!-- end goto page dialog -->		
+		
+		<!-- from person Info -->
+		<div class="container">
+		  	<div class="modal fade" id="formAlarmInfo" tabindex="-1" role="dialog">
+		    	<div class="modal-dialog"  style="color:#000 !important;">
+		      		<div class="modal-content">		        		
+	        			<div class="modal-header">
+	          				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	          				<h4 class="modal-title caps">Person Information</h4>	          					          	
+	        			</div>	        			
+	        			<div class="modal-body">
+	        				<form class="form-horizontal">
+								<div class="box-body">
+									<div class="box box-primary">																											        			                       	                        	
+						        		<div class="form-group col-sm-13">
+											<div class="form-row" style="margin-top:10px;">
+												<div class="form-group col-sm-5" style="margin-left:0px;">
+													<center>
+														<img id="imgDBPhoto" src="/xFace/dist/img/noimage.gif" style="align:center;width: 180px; height: 180px; border: 1px solid #ddd;">
+													</center>
+												</div>							 
+												<div class="form-group col-sm-2" style="margin-left:0px;">
+													<center>
+														<div class="numberCircle align-middle">50%</div>
+													</center>
+												</div>
+												<div class="form-group col-sm-5" style="margin-left:0px;">
+													<center>	    			  		    
+						    							<img id="imgLivePhoto" src="/xFace/dist/img/noimage.gif" style="align:center;width: 180px; height: 180px; border: 1px solid #ddd;">
+						    						</center>
+								    			</div>  		    	
+								  			</div>
+								  			<div class="form-row">
+												<div class="form-group col-sm-3" style="margin-left:0px;">
+													<label for="txtCertificateType">Certificate Type</label>									    					      	
+							                    	<input type="text" class="form-control" id="txtCertificateType" readonly>									    			
+												</div>							
+												<div class="form-group col-sm-5" style="margin-left:0px;">	    			  		    
+						    						<label for="txtCertificateNo">Certificate</label>								    						      	
+						                    		<input type="text" class="form-control" id="txtCertificateNo" readonly>
+								    			</div>  		    	
+								    			<div class="form-group col-sm-4" style="margin-left:0px;">	    			  		    
+						    						<label for="txtAlarmDate">Alarm Date</label>								    						      	
+						                    		<input type="text" class="form-control" id="txtAlarmDate" readonly>
+								    			</div>
+								  			</div>		  																	  	
+										  	<div class="form-row">
+												<div class="form-group col-sm-3" style="margin-left:0px;">
+													<label for="txtTitle">Title:</label>									    					      	
+							                    	<input type="text" class="form-control" id="txtTitle" readonly>									    			
+												</div>							
+												<div class="form-group col-sm-5" style="margin-left:0px;">	    			  		    
+						    						<label for="txtFullName">Full Name</label>								    						      	
+						                    		<input type="text" class="form-control" id="txtFullName" readonly>
+								    			</div>  		    	
+								    			<div class="form-group col-sm-4" style="margin-left:0px;">	    			  		    
+						    						<label for="txtCategory">Catgory</label>								    						      	
+						                    		<input type="text" class="form-control" id="txtCategory" readonly>
+								    			</div>  
+								  			</div>
+								  			<div class="form-row">
+												<div class="form-group col-sm-4" style="margin-left:0px;">	    			  		    
+						    						<label for="txtGateInfo">Gate</label>								    						      	
+						                    		<input type="text" class="form-control" id="txtGateInfo" readonly>
+								    			</div>
+								    			<div class="form-group col-sm-4" style="margin-left:0px;">	    			  		    
+						    						<label for="txtIPC">Camera</label>								    						      	
+						                    		<input type="text" class="form-control" id="txtIPC" readonly>
+								    			</div>								    			
+								  			</div>
+								  		</div>								  																							  	
+							  		</div>
+		                		</div>
+		               		</form>
+	        			</div>
+	        			<div id="divDisplayError" style="width:90%; margin-left: auto; margin-right: auto; margin-top: 10px;"></div>
+		        		<div class="modal-footer">
+	        				<div class="form-inline button_generic_operation">
+		          				<button type="button" id="btnAlarmInfoClose" class="btn btn-info" data-toggle="modal">Close</button>		          				
+		          			</div>		        					        			
+		        		</div>
+	      			</div>
+	    		</div>
+	  		</div>		
+		</div> 
+		<!-- end goto page dialog -->
+	</div>
+	<!-- end of content -->				
+</body>
+</html>

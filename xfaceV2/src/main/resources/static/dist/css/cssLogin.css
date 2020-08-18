@@ -1,0 +1,131 @@
+/*
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+*/
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: white;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: white;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: white;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: white;
+}
+
+
+
+@font-face { font-family: 'Open Sans'; font-style: normal;
+             src: local('Open Sans Regular'), local('OpenSans-Regular'),
+             url('font/open-sans/OpenSans-Regular.ttf') format('ttf'); 
+}
+
+body {
+  background: #367fa9;
+}
+
+/* style from login transparent */
+
+.box{
+	position : absolute;
+	/*top : 50%; */
+	left : 30%; 
+	transform : translate(-50px,40px);
+	/* width : 400px; */ 
+	/* padding : 40px; */
+	/*background : rgba(0,0,0,.8); 
+	box-sizing : border-box;
+	box-shadow : 0 15px 25px rgba(0,0,0,.5);
+	border-radius: 10px; */
+}
+.box h2{
+	margin:0; 
+	padding :0; 
+	color : black; /* color h2 login */
+	text-align: center;
+}
+.box .inputBox{
+	position:relative;
+}
+
+.box .inputBox input{
+	width:100%;
+	/* padding : 10px 0; */
+	font-size:14px;
+	color : black; /* color text inbox */
+	letter-spacing:1px;
+	margin-bottom : 20px;
+	border : none; 
+
+	border-bottom : 1px solid #367fa9; /* change line input box color */
+	outline : none; 
+	background: transparent;
+	-webkit-appearance: none; /* color border input firefox setting white */
+	
+
+	
+}
+.box .inputBox label{
+	position : absolute;
+	top : 5px;
+	left : 0;
+	padding : 10px 0;
+	font-size:16px;
+	color : #367fa9; /* change input lable */
+	pointer-events : none;
+	transition : .5s;
+}
+
+/* setting for input type border white */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+::-moz-color-swatch {
+    border-color: white;
+}
+input:focus {
+    outline: none;
+    border-color: white;
+}
+.error-input-border {
+    border: 1px solid #white;
+}
+
+input:active,
+input:focus {
+    padding: 2px solid #white /*for firefox and chrome*/
+}
+
+
+/* .ie is a class you would need to set at the html root level */
+.ie input:active,
+.ie input:focus {
+    padding: 3px solid #white /* IE needs 1px extra padding*/
+}
+
+.box .inputBox input:focus ~ label,
+.box .inputBox input:valid ~ label{
+	top : -10px;
+	left : 0; 
+	color : #03a9f4;
+	font-size : 12px;
+}
+.box input[type="submit"]{
+	background:transparent;
+	border:none; 
+	outline : none;
+	color : #fff;
+	background: #03a9f4;
+	padding: 10px 20px;
+	cursor : pointer;
+	border-radius: 5px;
+}
+.img{
+		width: 100%;
+		height: 100%;	
+}

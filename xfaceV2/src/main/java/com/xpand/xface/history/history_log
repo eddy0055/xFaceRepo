@@ -1,0 +1,301 @@
+20190620 add google map to landing page
+20190624 add function getAllMap into RestConfingController
+         change datatype of locationmapx, y from integer to string in object hwipc (done)
+         add location, loationmapx, locationmapy into hwgateinfo, boat (done)
+         add nameColor till nameSize fo hwgateinfo, boat and ipc (done)
+         
+         add below code to locationMap (done)         
+         @OneToMany(mappedBy="locationMap", fetch=FetchType.LAZY)         
+		 private Set<HWGateInfo> hwGateInfoList;
+		 @OneToMany(mappedBy="locationMap", fetch=FetchType.LAZY)
+		 private Set<Boat> boatList; (done)
+		 -----------------------
+		 update datatype of positionX, Y from int to String on object ResultDataIPC, ResultQueryPersonTrace (done)
+		 -----------------------
+		 add code below to removeSomeObject in LocationMapServiceImpl (done)
+		 map.setBoatList(null);
+		 map.setHwGateInfoList(null);
+		 ------------------------
+		 add code below to removeSomeObject in BoatServiceImpl (done)
+		 boat.getLocationMap().setHwIPCList(null);
+		 boat.getLocationMap().setBoatList(null);
+		 boat.getLocationMap().setHwGateInfoList(null);
+		 ------------------------
+		 add code below to removeSomeObject in HWGateInfoServiceImpl (done)
+		 hwGate.getLocationMap().setBoatList(null);
+		 hwGate.getLocationMap().setHwGateInfoList(null);
+		 hwGate.getLocationMap().setHwIPCList(null);
+		 ------------------------------------
+		 RestConfigController
+		 //Location Map
+		@RequestMapping("/getAllMap")	(done)
+		@PostMapping
+		public List<LocationMap> getAllMap(HttpServletRequest request) {
+			List<LocationMap> locationMapList = this.locationMapService.findAll(request.getSession().getId());
+			locationMapList = this.locationMapService.removeSomeObject(request.getSession().getId(), locationMapList);
+			return locationMapList;				
+		}
+		
+		//get hwIPC without map with gate (done)
+		@RequestMapping("/getHWIPCWOGate")	
+		@PostMapping
+		public List<HWIPC> getHWIPCWOGate(HttpServletRequest request) {
+			List<HWIPC> hwIPCList = this.hwIPCService.getHWIPCWOGate(request.getSession().getId());		
+			return hwIPCList;				
+		}	
+		------------------------------------------
+		add to HWIPCService (done)
+		public List<HWIPC> getHWIPCWOGate(String transactionId);
+		-----------------------------------------
+		add to HWIPCServiceImpl (done)
+		@Override
+		@CacheEvict(value=CacheName.CACHE_HWIPC, key="'key_ALL'")
+		public List<HWIPC> getHWIPCWOGate(String transactionId) {
+			// TODO Auto-generated method stub
+			List<HWIPC> hwIPCList = this.hwIPCDAO.findAll();
+			List<HWIPC> hwIPCReturn = new ArrayList<>();
+			for (HWIPC hwIPC: hwIPCList) {
+				if (hwIPC.getHwGateInfo()==null) {
+					hwIPC.setHwAlarmHist(null);
+					hwIPC.setHwCheckPointLibrary(null);
+					hwIPC.setHwGateInfo(null);
+					hwIPC.setHwVCM(null);							
+					hwIPC.getEquipmentDirection().setHWGateAccessInfoList(null);
+					hwIPC.getEquipmentDirection().setHwIPCList(null);
+					hwIPC.getLocationMap().setBoatList(null);
+					hwIPC.getLocationMap().setHwGateInfoList(null);
+					hwIPC.getLocationMap().setHwIPCList(null);
+					hwIPCReturn.add(hwIPC);				
+				}
+			}
+			return hwIPCReturn;
+		}
+		--------------------
+		add below code to class application confg (done)
+		public static final String KEY_ICON_MAP_CAMERA = "ICON_MAP_CAMERA";
+		public static final String KEY_ICON_MAP_GATE = "ICON_MAP_GATE";
+		public static final String KEY_ICON_MAP_NO_BOAT = "ICON_MAP_NO_BOAT";
+		--------------------
+		add tooltipster lib (done)
+		
+		
+20190705  add below code to RestAlarmController (Done)
+        @RequestMapping(value="/boatCheckInOut", produces= {"*/*"})
+		@ResponseBody
+		public String boatCheckInOut(@RequestBody String content) {
+			Logger.debug(this, LogUtil.getLogDebug(LogUtil.getWebSessionId(), "receive boatCheckInOut"));		
+			return "<response><result><errmsg>Success.</errmsg><code>0</code></result></response>";
+		}
+		@RequestMapping(value="/passengerPassGate", produces= {"*/*"})
+		@ResponseBody
+		public String passengerPassGate(@RequestBody String content) {
+			Logger.debug(this, LogUtil.getLogDebug(LogUtil.getWebSessionId(), "receive passengerPassGate"));		
+			return "<response><result><errmsg>Success.</errmsg><code>0</code></result></response>";
+		}
+		----------------------
+		add class PassengerBoatActivity to bean package
+		change alarm url from /rest/pushData -> rest/alarm/pushData
+		change url /rest/alarm to not require to login (CustomWebSecurity)
+		
+20190708 add all class to com.xpand.xface.bean.landing		
+         modify class RestReportController, Report Service, Report Service Impl, HWAlarmHistService, Impl (done)
+         add below code to XFaceBatchService, Impl (done)
+         public LandingPageInfo getLandingPageInfo(String transactionId); (done)
+         private List<DailyAlarmInfoField> getListOfButtonAlarm(String transactionId) (done) 
+		 private List<DailyBoatInfoField> getListOfBoatInfo(String transactionId) 		 (done)
+		 private DailyGateInfoList getListOfPassengerByGate(String transactionId) (done)
+		 private List<DailyFaceChartField> getListOfFaceByIPC(String transactionId) (done)
+20190718 add below code to HWVCM with get set
+		@Column(name="vcnSDKIp",length=20, nullable=false)  (done)
+		private String vcnSDKIp;
+		
+		@Column(name="vcnSDKLoginPort",length=10, nullable=false)  (done)
+		private String vcnSDKLoginPort;
+			
+		@Column(name="vcnSDKLoginUser",length=50, nullable=false)  (done)
+		private String vcnSDKLoginUser;
+		
+		@Column(name="vcnSDKLoginPwd",length=50, nullable=false) (done)
+		private String vcnSDKLoginPwd;
+		
+		@Column(name="vcnSDKCallBackURL",length=100, nullable=false) (done)
+		private String vcnSDKCallBackURL;
+		-------------------------------		 
+		add below code to HWAPIBatchService (done)
+		public HWWSField keepAliveSDK(HWVCM hwVCM); (done)
+		-------------------------------
+		add below code to ApplicationCfg (done)
+		public static final String KEY_API_KEEP_ALIVE_SDK = "API_KEEP_ALIVE_SDK";
+		--------------------------------
+		add below code to HWAPIBaseImpl (done)
+		protected String invokeSoapService
+		protected String invokeRestfulService
+		-------------------------------
+		add below code to HWXMLUtil  (done)
+		private static ResultStatus getResultStatusSDK
+		public static HWWSField extractLogonSDK
+		--------------------
+		add below code to ResultStatus (done) 
+		public static final String HW_WS_SDK_SUCCESS_CODE = "0";
+		public static final String HW_WS_SDK_SUCCESS_DESC = "Success";		
+		public static final String INVALID_SYSTEM_ID_CODE = "-40";
+		public static final String INVALID_SYSTEM_ID_DESC = "Invalid system Id";
+		public static final String INVALID_ALLOW_IP_ADDRESS_CODE = "-41";
+		public static final String INVALID_ALLOW_IP_ADDRESS_DESC = "Invalid allow IP address";
+		public static final String HW_WS_SDK_LOGIN_REQUIRE_ERROR_CODE = "-42";
+		public static final String HW_WS_SDK_LOGIN_REQUIRE_ERROR_DESC = "please login first";
+		public static final String HW_SDK_CHANGE_PWD_ERROR_CODE = "-43";
+		public static final String HW_SDK_CHANGE_PWD_ERROR_DESC = "VCN SDK server request to change password";
+		
+		----------------------
+		modify XFaceKeepAlive class (done)
+		modify XFaceKeepAliveImpl class (done)
+		modify HWAPIBatchService class (done)
+		modify HWAPIBatchServiceImpl class (done)
+		modify ApplicationCfg class (not done)
+		modify XFaceVCMServiceImpl class (done)
+		modify XFaceServerServiceImpl class (done)
+		modify HWVCM class
+		----------------------
+		//fyi
+		//change config
+		for SDK service on application cfg value1 is url, value2 is module name, value3 is soapAction
+		//change config
+		for error code of SDK success code, require change pwd use application cfg value2 (done)
+		
+20190725
+		modify class HWAPIBatchService (done) 
+		modify class HWAPIBatchServiceImpl (done)	
+		modify class Boat (done)
+20190726
+		modify class RestAlarmController (done)
+		modify class GlobalVarService (done)
+		modify class XFaceAlarmNotificationImpl (done)
+		delete AppConst (done)
+		modify class ConstUtil (done)
+		rename QueueVCMAlarm -> QueueHWAlarm (done)
+		modify class HWXMLUtil (done)
+		update class ResultStatus add below code (done)
+			public static final String NOT_SUPPORT_VCN_ALARM_ERROR_CODE = "-44";
+			public static final String NOT_SUPPORT_VCN_ALARM_ERROR_DESC = "VCN alarm type is not support";
+			---------------------------
+			}else if (this.statusCode.equals(ResultStatus.INVALID_SYSTEM_ID_CODE)) {
+				this.statusDesc = ResultStatus.INVALID_SYSTEM_ID_DESC;
+			}else if (this.statusCode.equals(ResultStatus.INVALID_ALLOW_IP_ADDRESS_CODE)) {
+				this.statusDesc = ResultStatus.INVALID_ALLOW_IP_ADDRESS_DESC;
+			}else if (this.statusCode.equals(ResultStatus.HW_WS_SDK_LOGIN_REQUIRE_ERROR_CODE)) {
+				this.statusDesc = ResultStatus.HW_WS_SDK_LOGIN_REQUIRE_ERROR_DESC;
+			}else if (this.statusCode.equals(ResultStatus.HW_SDK_CHANGE_PWD_ERROR_CODE)) {
+				this.statusDesc = ResultStatus.HW_SDK_CHANGE_PWD_ERROR_DESC;
+			}else if (this.statusCode.equals(ResultStatus.NOT_SUPPORT_VCN_ALARM_ERROR_CODE)) {
+				this.statusDesc = ResultStatus.NOT_SUPPORT_VCN_ALARM_ERROR_DESC;
+		remove below code from RoleServiceImpl (done)
+			import com.xpand.xface.util.AppConst;
+		add file VCNAlarm.xml to com.xpand.xface.util.xml (done)
+		
+		add below code to HWAlarmHist (done)
+		@Column(name="eventType",length=10)
+		private String eventType;
+		@Column(name="alarmType",length=20)
+		private String alarmType;
+		@Column(name="alarmSource",length=1)
+		private String alarmSource;
+		
+		modify class HWAlarmHistServiceImpl (done)
+		modify class QueryCameraResp (done)
+		modify class XFaceServerServiceImpl (done)
+		modify class XFaceBatchServiceImpl (done)
+		modify class XFaceBatchService (done)
+		
+		add below code to HWIPC (done)
+		public static final int IPC_STATUS_ONLINE = 0;
+		public static final int IPC_STATUS_OFFLINE = 1;
+	
+		@Column(name = "ipcStatus")
+		private int ipcStatus;
+		
+20190730 add below code to Result Status (done)
+		public static final String FAIL_TO_REMOVE_PERSON_FROM_VCM_ZK_CODE = "-45";
+		public static final String FAIL_TO_REMOVE_PERSON_FROM_VCM_ZK_DESC = "Fail to remove person from VCM and ZK system";
+		public static final String FAIL_TO_REMOVE_PERSON_FROM_VCM_CODE = "-46";
+		public static final String FAIL_TO_REMOVE_PERSON_FROM_VCM_DESC = "Fail to remove person from VCM system";
+		public static final String FAIL_TO_REMOVE_PERSON_FROM_ZK_CODE = "-47";
+		public static final String FAIL_TO_REMOVE_PERSON_FROM_ZK_DESC = "Fail to remove person from ZK system";	
+		public static final String FAIL_TO_ADD_PERSON_TO_VCM_ZK_CODE = "-48";
+		public static final String FAIL_TO_ADD_PERSON_TO_VCM_ZK_DESC = "Fail to add person from VCM and ZK system";
+		public static final String FAIL_TO_ADD_PERSON_TO_VCM_CODE = "-49";
+		public static final String FAIL_TO_ADD_PERSON_TO_VCM_DESC = "Fail to add person from VCM system";
+		public static final String FAIL_TO_ADD_PERSON_TO_ZK_CODE = "-50";
+		public static final String FAIL_TO_ADD_PERSON_TO_ZK_DESC = "Fail to add person from ZK system";	
+		
+		}else if (this.statusCode.equals(ResultStatus.FAIL_TO_REMOVE_PERSON_FROM_VCM_ZK_CODE)) {
+			this.statusDesc = ResultStatus.FAIL_TO_REMOVE_PERSON_FROM_VCM_ZK_DESC;			
+		}else if (this.statusCode.equals(ResultStatus.FAIL_TO_REMOVE_PERSON_FROM_VCM_CODE)) {
+			this.statusDesc = ResultStatus.FAIL_TO_REMOVE_PERSON_FROM_VCM_DESC;
+		}else if (this.statusCode.equals(ResultStatus.FAIL_TO_REMOVE_PERSON_FROM_ZK_CODE)) {
+			this.statusDesc = ResultStatus.FAIL_TO_REMOVE_PERSON_FROM_ZK_DESC;
+		}else if (this.statusCode.equals(ResultStatus.FAIL_TO_ADD_PERSON_TO_VCM_ZK_CODE)) {
+			this.statusDesc = ResultStatus.FAIL_TO_ADD_PERSON_TO_VCM_ZK_DESC;
+		}else if (this.statusCode.equals(ResultStatus.FAIL_TO_ADD_PERSON_TO_VCM_CODE)) {
+			this.statusDesc = ResultStatus.FAIL_TO_ADD_PERSON_TO_VCM_DESC;
+		}else if (this.statusCode.equals(ResultStatus.FAIL_TO_ADD_PERSON_TO_ZK_CODE)) {
+			this.statusDesc = ResultStatus.FAIL_TO_ADD_PERSON_TO_ZK_DESC;
+		--------------
+		modify class GlobalVarServiceImpl (done)
+		modify class CustomWebMVCConfigurer (done)
+		modify class PersonRegisterResult (done)
+		modify class PersonInfo (done)
+		modify class HWWSField (done)
+	
+		add class ZKPersonInfo, ZKPerson to com.xpand.xface.bean.zk (done)
+20190731	modify class ApplicationCfg (done)
+			modify class HWAPISessionServiceImpl, HWAPISessionService (done) 
+			modify class PersonInfoServiceImpl (done)
+			complete add/update/remove person to/from VCM,ZK (done) 
+			
+20190802 remove HWGateServiceImpl, XFaceAlarmNotificationImplV2 (done)
+		 remove package com.xpand.xface.gate (done)
+		 modify class QueueGateActivity (done)			
+		 modify class XFaceHWGateActivityImpl (done)
+		 modify class HWGateAccessInfo (done)
+		 create class BoatScheduleDAO, BoatScheduleService, BoatScheduleServiceImpl (done)
+		 modify class HWGateInfo (done)
+		 modify class PersonNotification,PersonController,HWGateInfoDAO cos edit gateinfo (done)
+		 remove class PersonControllerV2 com.xpand.xface.controller (done)
+		 modify class HWGateAccessInfoServiceImpl,HWGateInfoServiceImpl, HWGateInfoService,HWIPCServiceImpl (done)
+		 modify class XFaceVCMPersonManageImpl, HWIPCDAO, PassengerBoatActivity, boatDAO (done)
+
+20190806 modify class HWAlarmHistServiceImpl, ReportServiceImpl, RestReportController, DashboardController, ConstUtil,HWGateAccessInfoServiceImpl,XFaceBatchServiceImpl (done)	
+		 modify class Main-sidebar.html, RestPersonController, ReportService, HWAlarmHistService, HWGateAccessInfoService, StringUtil (done)
+		 remove class DailyStatisticsV0.html, DailyStatisticsV2.html,FaceByTime.html, FaceGateByTime.html,VisitorBoatByTime.html (done)
+		 			  VisitorByTime.html,  VisitorGateByTime.html, GateDMYStatistics.html, GateDMYStatistics.js, (done)
+		 			  LandingPage20190624.js, LandingPageV2.js, AlarmHistoryV2.js, AlarmHistoryV5.js, AlarmHistoryV6.js, (done)
+		 			  PersonRegisterV2.js, PersonTraceBak.js, AlarmHistoryV2.html, AlarmHistoryV3.html, AlarmHistoryV4.html, (done)
+		 			  AlarmHistoryV5.html,AlarmHistoryV6.html, AlarmMonitorBak1.html, index.html in person folder, (done)
+		 			  PersonRegisterV1.html,PersonRegisterV2.html,PersonRegisterV3.html,PersonRegisterV4.html,PersonTraceByPhotoBak.html (done)
+		 			  
+		 modify class LandingPage.html, LandingPage.css, LandingPage.js (done)
+		 
+20190808 modify class HWAlarmHistDAO, DailyAlarmInfoField,LandingPageInfo,DateTimeUtil,DailyBoatInfoField, LandingPageInfo (done)
+		 add class DailyAlarmInfoList,DailyBoatInfoList,DailyBoatInfoFieldSort to com.xpand.xface.bean.landing (done)
+		 add code below to application cfg (done)
+		 	public static final String KEY_LANDING_PAGE_VCN_ALARM_SIZE = "LANDING_PAGE_VCN_ALARM_SIZE";		 (done)
+20190809 modify class HWIPC, XFaceServerServiceImpl, LandingPage.js, LandingPage.html,DashboardController (done)
+				,XFaceAlarmNotificationImpl (done)
+		 add class XFaceLandingPageImpl to com.xpand.xface.service.batch.impl (done)
+		 modify class application cfg with below code (done)
+		 	public static final String KEY_LANDING_NOTIFICATION_SLEEP = "LANDING_NOTIFICATION_SLEEP"; (done)
+		 change class name from DailyFaceInfoList - > DailyIPCInfoList (done)
+20190813 modify class XFaceInterceptor, XFaceWebSocketHandler, HWGateInfo, Boat,BoatServiceImpl,LocationMap,HWGateInfoServiceImpl (done)
+				,HWIPCServiceImpl,LocationMapServiceImpl (done)
+		 modify class TablePage.java with below code
+		 	}else if(repoDAO instanceof LocationMapDAO){	
+				LocationMap locationMap = null;
+				for(Object content:result.getContent()) {
+					locationMap  = (LocationMap) content;
+					locationMap.setHwIPCList(null);				
+					locationMap.setHwGateInfoList(null);
+				}
+			}
+		**careful p'ton work with impl of person title, person category, person certificate, location map, person nationality (cache)
+		**html console log

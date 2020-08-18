@@ -1,0 +1,96 @@
+<!-- emergency button alarm -->
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:eventCallBack xmlns:ns2="esdk_ivs_professional_server"><eventType>10013</eventType><eventData>&lt;Content&gt;
+    &lt;AlarmEventId&gt;1022437&lt;/AlarmEventId&gt;
+    &lt;AlarmInCode&gt;04731980000000000201#0e64f08cd77a422082129693fe5068d2&lt;/AlarmInCode&gt;
+    &lt;DevDomainCode&gt;0e64f08cd77a422082129693fe5068d2&lt;/DevDomainCode&gt;
+    &lt;AlarmInType&gt;2&lt;/AlarmInType&gt;
+    &lt;AlarmInName&gt;X2221&lt;/AlarmInName&gt;
+    &lt;AlarmLevelValue&gt;100&lt;/AlarmLevelValue&gt;
+    &lt;AlarmLevelName&gt;&lt;/AlarmLevelName&gt;
+    &lt;AlarmLevelColor&gt;#ffff0000&lt;/AlarmLevelColor&gt;
+    &lt;AlarmType&gt;ALARM_TYPE_DI&lt;/AlarmType&gt;
+    &lt;AlarmTypeName&gt;&lt;/AlarmTypeName&gt;
+    &lt;AlarmCategory&gt;0101&lt;/AlarmCategory&gt;
+    &lt;OccurTime&gt;20190717051947&lt;/OccurTime&gt;
+    &lt;OccurNumber&gt;1&lt;/OccurNumber&gt;
+    &lt;AlarmStatus&gt;0&lt;/AlarmStatus&gt;
+    &lt;IsCommission&gt;0&lt;/IsCommission&gt;
+    &lt;PreviewUrl&gt;&lt;/PreviewUrl&gt;
+    &lt;ExistsRecord&gt;0&lt;/ExistsRecord&gt;
+    &lt;NVRCode&gt;0e64f08cd77a422082129693fe5068d2&lt;/NVRCode&gt;
+    &lt;AlarmDesc&gt;DI alarm&lt;/AlarmDesc&gt;
+    &lt;ExtParam&gt;X2221-CL&lt;/ExtParam&gt;
+&lt;/Content&gt;</eventData></ns2:eventCallBack></soap:Body></soap:Envelope>
+
+<!-- emergency button clear 
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+	<ns2:eventCallBack xmlns:ns2="esdk_ivs_professional_server">
+	<eventType>10017</eventType>
+	<eventData>&lt;Content&gt;
+    &lt;AlarmEventId&gt;1022440&lt;/AlarmEventId&gt;
+    &lt;AlarmInCode&gt;04731980000000000201#0e64f08cd77a422082129693fe5068d2&lt;/AlarmInCode&gt;
+    &lt;DevDomainCode&gt;0e64f08cd77a422082129693fe5068d2&lt;/DevDomainCode&gt;
+    &lt;AlarmType&gt;ALARM_TYPE_DI&lt;/AlarmType&gt;
+    &lt;OccurNumber&gt;1&lt;/OccurNumber&gt;
+    &lt;AlarmStatus&gt;4&lt;/AlarmStatus&gt;
+    &lt;Reserve&gt;&lt;/Reserve&gt;
+    &lt;AlarmOperateInfo&gt;
+        &lt;OperatorId&gt;-1&lt;/OperatorId&gt;
+        &lt;OperatorName&gt;&lt;/OperatorName&gt;
+        &lt;OperateTime&gt;&lt;/OperateTime&gt;
+        &lt;Reserve&gt;&lt;/Reserve&gt;
+        &lt;OperateInfo&gt;&lt;/OperateInfo&gt;
+    &lt;/AlarmOperateInfo&gt;
+&lt;/Content&gt;</eventData></ns2:eventCallBack></soap:Body></soap:Envelope>
+-->
+
+<!-- camera offline
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:eventCallBack xmlns:ns2="esdk_ivs_professional_server"><eventType>10013</eventType><eventData>&lt;Content&gt;
+    &lt;AlarmEventId&gt;0&lt;/AlarmEventId&gt;
+    &lt;AlarmInCode&gt;04731980000000000000#0e64f08cd77a422082129693fe5068d2&lt;/AlarmInCode&gt;
+    &lt;DevDomainCode&gt;0e64f08cd77a422082129693fe5068d2&lt;/DevDomainCode&gt;
+    &lt;AlarmInType&gt;1&lt;/AlarmInType&gt;
+    &lt;AlarmInName&gt;X2221-CL&lt;/AlarmInName&gt;
+    &lt;AlarmLevelValue&gt;100&lt;/AlarmLevelValue&gt;
+    &lt;AlarmLevelName&gt;&lt;/AlarmLevelName&gt;
+    &lt;AlarmLevelColor&gt;#ffff0000&lt;/AlarmLevelColor&gt;
+    &lt;AlarmType&gt;ALARM_IPC_OFFLINE&lt;/AlarmType&gt;
+    &lt;AlarmTypeName&gt;&lt;/AlarmTypeName&gt;
+    &lt;AlarmCategory&gt;03&lt;/AlarmCategory&gt;
+    &lt;OccurTime&gt;20190717072714&lt;/OccurTime&gt;
+    &lt;OccurNumber&gt;1&lt;/OccurNumber&gt;
+    &lt;AlarmStatus&gt;0&lt;/AlarmStatus&gt;
+    &lt;IsCommission&gt;0&lt;/IsCommission&gt;
+    &lt;PreviewUrl&gt;&lt;/PreviewUrl&gt;
+    &lt;ExistsRecord&gt;0&lt;/ExistsRecord&gt;
+    &lt;NVRCode&gt;0e64f08cd77a422082129693fe5068d2&lt;/NVRCode&gt;
+    &lt;AlarmDesc&gt;&lt;/AlarmDesc&gt;
+    &lt;ExtParam&gt;HostIP=184.1.1.40,deviceCode=0e64f08cd77a422082129693fe5068d2,LocalDesc=DecisionSequence:0&lt;/ExtParam&gt;
+&lt;/Content&gt;</eventData></ns2:eventCallBack></soap:Body></soap:Envelope>
+ -->
+
+<!-- camera online 
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:eventCallBack xmlns:ns2="esdk_ivs_professional_server"><eventType>10013</eventType><eventData>&lt;Content&gt;
+    &lt;AlarmEventId&gt;0&lt;/AlarmEventId&gt;
+    &lt;AlarmInCode&gt;04731980000000000000#0e64f08cd77a422082129693fe5068d2&lt;/AlarmInCode&gt;
+    &lt;DevDomainCode&gt;0e64f08cd77a422082129693fe5068d2&lt;/DevDomainCode&gt;
+    &lt;AlarmInType&gt;1&lt;/AlarmInType&gt;
+    &lt;AlarmInName&gt;X2221-CL&lt;/AlarmInName&gt;
+    &lt;AlarmLevelValue&gt;100&lt;/AlarmLevelValue&gt;
+    &lt;AlarmLevelName&gt;&lt;/AlarmLevelName&gt;
+    &lt;AlarmLevelColor&gt;#ffff0000&lt;/AlarmLevelColor&gt;
+    &lt;AlarmType&gt;ALARM_IPC_ONLINE&lt;/AlarmType&gt;
+    &lt;AlarmTypeName&gt;&lt;/AlarmTypeName&gt;
+    &lt;AlarmCategory&gt;03&lt;/AlarmCategory&gt;
+    &lt;OccurTime&gt;20190717072833&lt;/OccurTime&gt;
+    &lt;OccurNumber&gt;1&lt;/OccurNumber&gt;
+    &lt;AlarmStatus&gt;0&lt;/AlarmStatus&gt;
+    &lt;IsCommission&gt;0&lt;/IsCommission&gt;
+    &lt;PreviewUrl&gt;&lt;/PreviewUrl&gt;
+    &lt;ExistsRecord&gt;0&lt;/ExistsRecord&gt;
+    &lt;NVRCode&gt;0e64f08cd77a422082129693fe5068d2&lt;/NVRCode&gt;
+    &lt;AlarmDesc&gt;&lt;/AlarmDesc&gt;
+    &lt;ExtParam&gt;HostIP=184.1.1.40,deviceCode=0e64f08cd77a422082129693fe5068d2,LocalDesc=DecisionSequence:0&lt;/ExtParam&gt;
+&lt;/Content&gt;</eventData></ns2:eventCallBack></soap:Body></soap:Envelope>
+-->

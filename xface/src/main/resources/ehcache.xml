@@ -1,0 +1,54 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" 
+	updateCheck="true"
+	monitoring="autodetect" 
+	dynamicConfig="true">
+	<diskStore path="java.io.tmpdir" />
+	<cache name="cacheUserInfo" 
+		maxEntriesLocalHeap="1000"
+		maxEntriesLocalDisk="2000" 
+		eternal="false" 
+		diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="3600" 
+		timeToLiveSeconds="3600"
+		memoryStoreEvictionPolicy="LFU" 
+		transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	<cache name="cacheAppCfg" 
+		maxEntriesLocalHeap="200"
+		maxEntriesLocalDisk="201" 
+		eternal="false" 
+		diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="3600" 
+		timeToLiveSeconds="3600"
+		memoryStoreEvictionPolicy="LFU" 
+		transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<cache name="cacheHWIPC" 
+		maxEntriesLocalHeap="10"
+		maxEntriesLocalDisk="20" 
+		eternal="false" 
+		diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="3600" 
+		timeToLiveSeconds="3600"
+		memoryStoreEvictionPolicy="LFU" 
+		transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<cache name="cachePersonInfo" 
+		maxEntriesLocalHeap="2000"
+		maxEntriesLocalDisk="2001" 
+		eternal="false" 
+		diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="3600" 
+		timeToLiveSeconds="3600"
+		memoryStoreEvictionPolicy="LFU" 
+		transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+</ehcache>
